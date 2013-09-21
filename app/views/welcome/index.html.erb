@@ -1,0 +1,71 @@
+<div class="container-fluid home_content">
+  <div class="row-fluid hero_bar"><!-- start hero -->
+    <div class="span12">
+      <div class="row-fluid">
+        <br/>
+
+        <div class="span9 offset1 home-hero">
+
+          <div class="row-fluid">
+            <div class="span11 offset1">
+              <div class="row-fluid">
+                <div class="span5">
+                  <h3>I'm looking for...</h3>
+                </div>
+
+              </div>
+
+              <div class="row-fluid">
+
+                <div>
+                  <%= text_field_tag :search, params[:search],class: "span12 search_input", placeholder: "What type of work are you looking for?" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br/>
+
+          <div class="row-fluid">
+            <div class="span12">
+
+              <div class="row-fluid">
+                <div class="span3 offset1">
+                  <h3>Post Your Skills</h3>
+                  <a href="post-job.html">Fast and free, with upgrade options</a><br/>
+                </div>
+                <div class="span3 offset1">
+                  <h3>Browse Skills</h3>
+                  <a href="browse.html">Find the perfect contractor for you</a><br/>
+                </div>
+                <div class="span3 offset1">
+                  <h3>Register</h3>
+                  <a href="register.html">browse and list your skills quickly and easily</a><br/>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <table class="">
+            <tr>
+              test data
+            </tr>
+          </table>
+
+        </div>
+       
+
+      </div>
+    </div>
+  </div>
+</div><!-- end hero -->
+ <div id="users">
+<% @users.each do |user| %>
+  <h2>
+    <%= link_to user.name, user %>
+  </h2>
+  <div class="info">
+    by <%= user.first_name %>
+    on <%= user.last_name %>
+  </div>
+<% end %>
+</div>

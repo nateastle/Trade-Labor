@@ -1,0 +1,19 @@
+<h1>Photos</h1>
+<br />
+
+<p>This is the Photos (Index Action) page. To view/edit a photo, hover over and click on the thumbnail.<p>
+
+<br />
+<%= link_to 'Back', user_path(current_user) %> |
+<%= link_to 'Upload Photos', new_user_photo_path(current_user) %> |
+
+<br />
+<div id="gallery">
+  <ul id="grid">
+    <% @photos.each do |pic| %>
+     <li><%= link_to image_tag(pic.name.url(:thumb).to_s), { :controller => 'photos', :action => 'show', :id => pic.id } %>	
+				<%= link_to 'Remove', { :controller =>  'photos', :action => 'destroy', :id => pic.id }, :confirm => "Delete this photo?", :method => 'delete' %>
+			</li>
+    <% end %>
+  </ul>
+</div>

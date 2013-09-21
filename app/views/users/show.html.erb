@@ -1,0 +1,50 @@
+<% provide(:title, @user.name) %>
+<h1>
+  <%= @user.name %>
+</h1>
+
+<p>
+	<b>Name: </b>
+	<%= @user.name %>
+</p>
+
+<p>
+<b>Email: </b>
+	<%= @user.email %>
+</p>
+<p>
+<b>Business: </b>
+	<%= @user.name %>
+
+</p>
+<b>First Name: </b>
+	<%= @user.first_name %>
+</p>
+<b>Last Name: </b>
+	<%= @user.last_name %>
+</p>
+<b>Address : </b>
+	<%= @user.address_1 %>
+</p>
+<b>City: </b>
+	<%= @user.city %>
+</p>
+<b>Zip Code: </b>
+	<%= @user.postal_code %>
+</p>
+<b>Contact Phone: </b>
+	<%= @user.contact_phone %>
+</p>
+
+<p>
+<b>Cell Phone: </b>
+	<%= @user.cell_phone %>
+</p>
+
+<p>
+
+	<%= link_to 'Edit Profile', edit_user_registration_path %>
+</p>
+<p>
+<%= link_to 'Photos Viewer', user_photos_path(current_user) %>
+	</p>

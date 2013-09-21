@@ -1,0 +1,39 @@
+<div class="row-fluid header_bar navbar navbar-fixed-top main-theme"><!-- start header -->
+  <div class="navbar-inner">
+    <div class="container-fluid">
+
+
+      <div class="logo">
+        <a href="/">
+          <span class="main_logo_text"><%= image_tag("final1.png", alt: "Trade-Labor") %></span></span>
+
+        </a>
+      </div>
+      <nav>
+
+        <ul class="nav pull-right">
+          <li><a href="browse.html">Browse Workers</a></li>
+               <% if user_signed_in? %>
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Account <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Profile", current_user %></li>
+                  <li><%= link_to "Settings", '#' %></li>
+                  <li class="divider"></li>
+                  <li>
+                   <%= link_to('Logout', destroy_user_session_path)%>
+                  </li>
+                </ul>
+              </li>
+          <% else %>
+              <li> <%=link_to "Sign up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+
+      </nav>
+      <!-- /.nav-collapse -->
+    </div>
+  </div>
+</div><!-- end header -->
