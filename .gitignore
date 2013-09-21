@@ -15,4 +15,3 @@
 /tmp
 /db/*.sqllite3
 /vendor/*
-/lib/*
