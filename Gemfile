@@ -19,6 +19,10 @@ gem 'sunspot_solr', :group => :development
 gem 'progress_bar'
 #### Solr specific end ######
 
+gem 'simple_form'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+
 require 'csv'
 
 # Gems used only for assets and not required
@@ -58,7 +62,6 @@ gem "capybara", :group => [:development, :test]
 gem "nifty-generators", :group => :development
 gem "kaminari"
 gem "annotate"
-gem "simple_form"
 gem "devise"
 gem "thin"
 gem 'rmagick'

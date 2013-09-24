@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
-  :postal_code, :name, :first_name, :last_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids
+  :postal_code, :name, :first_name, :last_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service
 
   has_many :photos, :dependent => :destroy 
   has_one :schedule, :dependent => :destroy
@@ -13,12 +13,25 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :photos
 
   after_save :reindex_user!
+ 
+  validates_uniqueness_of :email
+  validates :email, :password , :first_name, :last_name, :address_1, :city, :state ,:postal_code, :presence => true
+  validates_confirmation_of :password
+  validates :postal_code, numericality: { only_integer: true }
+  validates_acceptance_of :terms_of_service, :allow_nil => false, :message => "Please accept the terms and conditions", :on => :create
+
+
+  validate :valid_postal_code
 
   RADIUS = 25 
 
   # TODO : We can calculcate lat , long at the time of registration so we will
   #not need a saprate zipcoe model and an "additional query".
   
+  def valid_postal_code
+     errors.add(:postal_code, "Postal code is invalid")  unless  zipcode
+  end
+
   def zipcode
        ZipCode.find_by_ZipCode(postal_code)
   end

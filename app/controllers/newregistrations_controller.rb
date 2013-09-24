@@ -13,7 +13,6 @@ class NewregistrationsController < Devise::RegistrationsController
   end
 
   def create
-    
     resource = build_resource(params[:user])
     resource.build_schedule(params[:schedule])
     #@schedules = resource.schedules.new(params[:schedules])
