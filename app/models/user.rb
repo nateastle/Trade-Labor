@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
   after_save :reindex_user!
 
+  RADIUS = 25 
+
   # TODO : We can calculcate lat , long at the time of registration so we will
   #not need a saprate zipcoe model and an "additional query".
   
@@ -45,7 +47,7 @@ class User < ActiveRecord::Base
     if current_user 
        User.search do
         fulltext query
-        with(:location).in_radius(current_user.zipcode.Latitude.to_f, current_user.zipcode.Longitude.to_f, 25)
+        with(:location).in_radius(current_user.zipcode.Latitude.to_f, current_user.zipcode.Longitude.to_f, RADIUS)
         paginate :page => 1, :per_page => 25
        end.results
     else
