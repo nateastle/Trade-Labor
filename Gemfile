@@ -13,6 +13,12 @@ gem "twitter-bootstrap-rails"
 gem 'pg'
 gem 'pg_search'
 
+#### Solr specific start ######
+gem 'sunspot_rails' #, '~>2.0.0.pre'
+gem 'sunspot_solr', :group => :development
+gem 'progress_bar'
+#### Solr specific end ######
+
 require 'csv'
 
 # Gems used only for assets and not required
@@ -42,7 +48,10 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+group :development do
+  gem "rails-erd"
+  gem "debugger"
+end
 
 gem "rspec-rails", :group => [:development, :test]
 gem "capybara", :group => [:development, :test]
