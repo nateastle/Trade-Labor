@@ -5,7 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+puts "Seeding....Start"
+
 ZipCode.delete_all
 CSV.foreach("#{Rails.root}/lib/data/zip-codes-database-STANDARD.csv", :headers => :first_row) do |row|
   ZipCode.create!(row.to_hash)
 end
+
+Skill.import
+
+puts "Seeding....End"

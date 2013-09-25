@@ -9,8 +9,13 @@
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
 
+
+
     <%= f.input :first_name,:required => true, label: 'First Name' %>
     <%= f.input :last_name,:required => true, label: 'Last Name' %>
+
+    <%= f.association :skills %>
+    
     <%= f.input :address_1,:required => true, label: 'Address1' %>
     <%= f.input :address_2, label: 'Adress2' %>
     <%= f.input :city,:required => true, label: 'City' %>

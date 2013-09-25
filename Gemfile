@@ -23,7 +23,10 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 
-require 'csv'
+ require 'csv'
+gem 'rubyzip', '< 1.0.0'
+gem 'roo','1.10.1'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,7 +40,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', "< 3.0.0"
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
