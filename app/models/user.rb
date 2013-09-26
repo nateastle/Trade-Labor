@@ -40,9 +40,13 @@ class User < ActiveRecord::Base
     text :skills do
       skills.map { |skill| skill.name }
     end
+    
     text :search_skills , :as  => :user_skill do
       skills.map { |skill| skill.name }
     end
+
+    text :postal_code , :as => :user_postal_code
+      
     latlon(:location) { Sunspot::Util::Coordinates.new(zipcode.Latitude, zipcode.Longitude) }
     string  :postal_code
   end  
