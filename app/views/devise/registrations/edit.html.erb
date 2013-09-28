@@ -1,18 +1,22 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <div class="user-skills">
-      <h1>skills</h1>
-      <div>
-    <% current_user.skills.each do |a| %>
-     <%= a.name %>
-    <%end %>
-  </div>
-    <%= f.association :skills %>
+    <%= f.error_notification %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+
+    <div class="form-inputs">
+      <div class="user-skills">
+        <h1>skills</h1>
+          <div>
+            <%= resource.skills.collect(&:name).join(",") if resource.skills %>
+          </div>
+        <%= f.association :skills %>
     </div>
+
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :name %>
     <%= f.input :first_name %>
@@ -26,31 +30,22 @@
     
     <%= f.input :contact_phone %>
     <%= f.input :cell_phone %>
-   <div>
-    <%= fields_for current_user.schedule do |a| %>
-      <%= a.label :days, "Available Days" %>
-      <%= a.check_box :days %>
   
-    <%end %>
-  </div>
-   <div>
-    <%= fields_for current_user.schedule do |a| %>
-      <%= a.label :nights, "Available Nights" %>
-      <%= a.check_box :nights %>
-  
-    <%end %>
-  </div>
-   <div>
-    <%= fields_for current_user.schedule do |a| %>
-      <%= a.label :weekends, "Available Weekends" %>
-      <%= a.check_box :weekends %>
-  
-    <%end %>
-  </div>
- 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <%= f.fields_for :schedule do |schedule| %>  
+        <div>
+            <%= schedule.label :days, "Available Days" %>
+            <%= schedule.check_box :days %>
+        </div>
+         <div>
+            <%= schedule.label :nights, "Available Nights" %>
+            <%= schedule.check_box :nights %> 
+        </div>
+         <div>
+            <%= schedule.label :weekends, "Available Weekends" %>
+            <%= schedule.check_box :weekends %>
+        </div>
     <% end %>
+
 
     <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
     <%= f.input :password_confirmation, :required => false %>

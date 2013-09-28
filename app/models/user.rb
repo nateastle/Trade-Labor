@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
-  :postal_code, :name, :first_name, :last_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service
+  :postal_code, :name, :first_name, :last_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service ,:schedule_attributes
 
   has_many :photos, :dependent => :destroy 
   has_one :schedule, :dependent => :destroy
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   after_save :reindex_user!
  
   validates_uniqueness_of :email
-  validates :email, :password , :first_name, :last_name, :address_1, :city, :state ,:postal_code, :presence => true
+  validates :email, :first_name, :last_name, :address_1, :city, :state ,:postal_code, :presence => true
   validates_confirmation_of :password
   validates :postal_code, numericality: { only_integer: true }
   validates_acceptance_of :terms_of_service, :allow_nil => false, :message => "Please accept the terms and conditions", :on => :create

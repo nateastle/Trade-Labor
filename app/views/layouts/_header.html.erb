@@ -4,13 +4,10 @@
 
 
       <div class="logo">
-        <a href="/">
-          <span class="main_logo_text"><%= image_tag("final1.png", alt: "Trade-Labor") %></span></span>
-
-        </a>
+         <%= link_to image_tag("final1.png") ,root_path %>
       </div>
-      <nav>
 
+      <nav>
         <ul class="nav pull-right">
           <li><a href="browse.html">Browse Workers</a></li>
                <% if user_signed_in? %>
