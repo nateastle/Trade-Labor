@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :photos
 
   after_save :reindex_user!
+  before_save :set_name
+
  
   validates_uniqueness_of :email
   validates :email, :first_name, :last_name, :address_1, :city, :state ,:postal_code, :presence => true
@@ -28,6 +30,11 @@ class User < ActiveRecord::Base
   # TODO : We can calculcate lat , long at the time of registration so we will
   #not need a saprate zipcoe model and an "additional query".
   
+  def set_name
+       self.name = "#{first_name} #{last_name}".strip
+  end  
+
+
   def valid_postal_code
      errors.add(:postal_code, "Postal code is invalid")  unless  zipcode
   end
@@ -55,10 +62,6 @@ class User < ActiveRecord::Base
     [address_1, address_2, city, state, postal_code].select {|x| x.present?}.join(', ')
   end
  
-  def get_name
-     "#{first_name} #{last_name}".strip
-  end  
-
 
   def self.find_users(query ,current_user)
     if current_user 

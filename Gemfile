@@ -12,6 +12,7 @@ gem "twitter-bootstrap-rails"
 #gem 'sqlite3'
 gem 'pg'
 gem 'pg_search'
+gem 'jquery-tokeninput-rails'
 
 #### Solr specific start ######
 gem 'sunspot_rails' #, '~>2.0.0.pre'

@@ -16,3 +16,15 @@
 //= require twitter/bootstrap
 //= require_tree .
 //= require rails.validations.simple_form
+//= require jquery.tokeninput
+
+
+
+// Searcg box by token input field
+$(function(){
+  $("#search").tokenInput("/search_suggestions",
+  	{ queryParam: 'term' ,
+  	  propertyToSearch: "name",
+  	  theme: "facebook" 
+  	});
+});

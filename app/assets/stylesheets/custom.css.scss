@@ -576,6 +576,7 @@ footer .container {
   background: #E9E9E9;
 }
 .container-fluid {
+  margin-top: 10px;
   margin-right: auto;
   margin-left: auto;
   max-width: 940px;
@@ -598,6 +599,9 @@ footer .container {
 .logo {
   height: 65px;
 }
+#logo-image:hover {
+  background-color: transparent !important;;
+}
 .span4.logo h1 {
   line-height: 21px;
 }
@@ -617,7 +621,7 @@ h3 span {
 .logo {
   width: 254px;
   margin-left: 5px;
-  margin-top: 15px;
+  margin-bottom: 15px;
   float: left;
 }
 .logo a {
