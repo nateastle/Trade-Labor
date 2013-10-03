@@ -67,7 +67,7 @@ gem "capybara", :group => [:development, :test]
 gem "nifty-generators", :group => :development
 gem "kaminari"
 gem "annotate"
-gem "devise"
+gem "devise" , "3.1.0"
 gem "thin"
 gem 'rmagick'
 gem 'carrierwave'
