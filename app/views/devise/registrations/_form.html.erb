@@ -1,38 +1,98 @@
  <div class="form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
-
-    <%= f.input :terms_of_service, :as => :boolean %> 
-
-    <%= f.input :business_name,:required => true, label: 'Business Name' %>
-
-    <%= f.input :first_name,:required => true, label: 'First Name' %>
-    <%= f.input :last_name,:required => true, label: 'Last Name' %>
-
-    <%= f.association :skills %>
-    
-    <%= f.input :address_1,:required => true, label: 'Address1' %>
-    <%= f.input :address_2, label: 'Adress2' %>
-    <%= f.input :city,:required => true, label: 'City' %>
-    <%= f.input :state,:required => true, label: 'State' %>
-    <%= f.input :postal_code,:required => true, label: 'Postal Code' %>
-    <%= f.input :contact_phone, label: 'Contact Phone' %>
-    <%= f.input :cell_phone, label: 'Cell Phone' %>
-
-    <%= f.fields_for :schedule do |schedule| %>  
+   <fieldset>
         <div>
-            <%= schedule.label :days, "Available Days" %>
-            <%= schedule.check_box :days %>
+                <%= f.label :email %>
+                <%= f.email_field :email, :required => true %>
         </div>
-         <div>
-            <%= schedule.label :nights, "Available Nights" %>
-            <%= schedule.check_box :nights %> 
-        </div>
-         <div>
-            <%= schedule.label :weekends, "Available Weekends" %>
-            <%= schedule.check_box :weekends %>
-        </div>
-    <% end %>
 
+        <div>
+            <%= f.label :password %>
+            <%= f.password_field :password, :required => true %>
+        </div> 
+
+        <div>
+            <%= f.label :password_confirmation %>   
+            <%= f.password_field :password_confirmation, :required => true %>
+        </div>
+
+        <div>
+            <%= f.label :business_name %>
+            <%= f.text_field :business_name %>
+        </div>
+
+        <div>
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name%>
+        </div>
+
+        <div>
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name%>
+        </div>
+            <%#= f.association :skills %>
+            
+        <div>
+            <%= f.label :skill_tokens, "Skills" %>
+            <%= f.text_field :skill_tokens %>
+        </div>
+
+            
+        <div>
+            <%= f.label :address_1 %>
+            <%= f.text_field :address_1 %>
+        </div>
+        <div>
+            <%= f.label :address_2 %>
+            <%= f.text_field :address_2 %>
+        </div>
+        <div>
+            <%= f.label :city %>
+            <%= f.text_field :city %>
+        </div>
+        <div>
+            <%= f.label :state %>
+            <%= f.text_field :state %>
+        </div>
+        <div>
+            <%= f.label :postal_code %>
+            <%= f.text_field :postal_code %>
+        </div>
+        <div>
+            <%= f.label :contact_phone %>
+            <%= f.text_field :contact_phone %>
+        </div>
+        <div>
+            <%= f.label :cell_phone %>
+            <%= f.text_field :cell_phone %>
+        </div>
+
+        <%= f.fields_for :schedule do |schedule| %>  
+            <div>
+                <%= schedule.label :days, "Available Days" %>
+                <%= schedule.check_box :days %>
+            </div>
+             <div>
+                <%= schedule.label :nights, "Available Nights" %>
+                <%= schedule.check_box :nights %> 
+            </div>
+             <div>
+                <%= schedule.label :weekends, "Available Weekends" %>
+                <%= schedule.check_box :weekends %>
+            </div>
+        <% end %>
+
+        <div>
+            <div id="terms-pane">
+                <%= render :partial => "shared/terms_and_conditions"%>
+            </div>
+            <%= f.label :terms_of_service %>
+            <%= f.check_box :terms_of_service %> 
+        </div>
+  
+ </fieldset>
 </div>
+
+
+<style>
+#terms-pane { width:800px; height:200px; overflow:scroll; border:1px solid #ccc; background:#eee; margin:5px 0; padding:10px 20px; }
+</style>

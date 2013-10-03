@@ -11,7 +11,9 @@ class Skill < ActiveRecord::Base
   #     Sunspot.index! self.users
   # end  
 
-
+  searchable do
+     text :name, :as => :user_skill
+  end 
 
   def self.import(path = Rails.root.join('lib','data/skills.xlsx'))
    unless path.blank?

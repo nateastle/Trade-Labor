@@ -3,6 +3,7 @@ class SearchSuggestionsController < ApplicationController
 		#@users =  User.text_search(params[:term])  
 		
 		@users = User.find_users(params[:term]  , current_user )
-		render json: @users
+		render json: @users.map(&:name)
+		#render json: @users
 	end
 end

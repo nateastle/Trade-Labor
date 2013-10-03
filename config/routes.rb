@@ -2,7 +2,11 @@ TradeLabor::Application.routes.draw do
   resources :search_suggestions
 
 
-  resources :skills
+  resources :skills do
+    collection do
+      get 'autocomplete' , :action => 'autocomplete'
+    end  
+  end  
 
 
   get "schedule/new"

@@ -3,7 +3,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
-  :postal_code, :name, :first_name, :last_name,:business_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service ,:schedule_attributes
+  :postal_code, :name, :first_name, :last_name,:business_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service ,:schedule_attributes,:skill_tokens
+
+
+  attr_reader :skill_tokens
 
   has_many :photos, :dependent => :destroy 
   has_one :schedule, :dependent => :destroy
@@ -82,5 +85,10 @@ class User < ActiveRecord::Base
   def reindex_user!
       Sunspot.index! self
   end
+
+  def skill_tokens=(ids)
+    self.skill_ids = ids.split(",")
+  end
+
 
 end

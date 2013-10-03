@@ -80,4 +80,18 @@ class SkillsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def autocomplete  
+    # @skills = Skill.where("lower(name) like ?", "%#{params[:term].downcase}%")
+    # render json: @skills
+
+       @skills =  Skill.search do
+        fulltext params[:term]
+        paginate :page => 1, :per_page => 1000
+       end.results
+
+       render json: @skills
+  end
+
 end

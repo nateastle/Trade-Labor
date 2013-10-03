@@ -22,9 +22,10 @@
 
 // Searcg box by token input field
 $(function(){
-  $("#search").tokenInput("/search_suggestions",
+  $("#user_skill_tokens").tokenInput("/skills/autocomplete",
   	{ queryParam: 'term' ,
   	  propertyToSearch: "name",
-  	  theme: "facebook" 
+  	  theme: "facebook" ,
+  	  prePopulate: $("#user_skill_tokens").data('load')
   	});
 });
