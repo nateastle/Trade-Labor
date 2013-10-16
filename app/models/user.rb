@@ -1,32 +1,37 @@
 class User < ActiveRecord::Base
+  rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
-  :postal_code, :name, :first_name, :last_name,:business_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service ,:schedule_attributes,:skill_tokens
+  :postal_code, :name, :first_name, :last_name,:business_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service ,:schedule_attributes,:skill_tokens,:membership,:ip_address
 
+  attr_accessor :membership , :ip_address
 
   attr_reader :skill_tokens
 
   has_many :photos, :dependent => :destroy 
   has_one :schedule, :dependent => :destroy
   has_and_belongs_to_many :skills
+  has_one :payment_detail 
+
   accepts_nested_attributes_for :skills
   accepts_nested_attributes_for :schedule
   accepts_nested_attributes_for :photos
 
-  after_save :reindex_user!
-  before_save :set_name
-
- 
   validates_uniqueness_of :email
   validates :email, :first_name, :last_name, :address_1, :city, :state ,:postal_code, :business_name ,:presence => true
   validates_confirmation_of :password
   validates :postal_code, numericality: { only_integer: true }
   validates_acceptance_of :terms_of_service, :allow_nil => false, :message => "Please accept the terms and conditions", :on => :create
-
-
   validate :valid_postal_code
+  validate :membership , :presence => true
+  validates_inclusion_of :membership, in:  Role::ROLES.collect {|role| role[1][:name] }
+  validate :validate_card_for_payment_detail
+
+
+  after_save :reindex_user!
+  before_save :set_name
 
   RADIUS = 25 
 
@@ -90,5 +95,97 @@ class User < ActiveRecord::Base
     self.skill_ids = ids.split(",")
   end
 
+  def save_with_payment(payment_detail) 
+    debugger        
+    if valid? 
+      if membership == Role::ROLES[:business][:name] || membership == Role::ROLES[:premium][:name]
+        if valid_card?(payment_detail) && payment_success?(payment_detail,Role::ROLES[membership.to_sym][:price]) 
+           add_role Role::ROLES[membership.to_sym][:name].to_sym 
+           save!
+        end 
+      else  
+           add_role Role::ROLES[:basic][:name].to_sym
+           save!
+      end  
+    end
 
+    rescue exception => e
+      logger.error "Paypal error while creating customer: #{e.message}"
+      errors.add :base, "There was a problem with your credit card."
+      false
+  end 
+
+
+
+
+  def save_with_payment
+
+        if membership.to_s == Role::ROLES[:business][:name]  ||  membership.to_s == Role::ROLES[:premium][:name]           
+            if payment_detail.payment_success? 
+              add_role Role::ROLES[membership.to_sym][:name].to_sym 
+              return true if save!
+            end  
+        elsif membership.to_s == Role::ROLES[:basic][:name]
+            add_role Role::ROLES[membership.to_sym][:name].to_sym
+            return true if save!
+        end
+        
+        return false 
+  end 
+
+  ######### Private  ########## 
+  private
+
+  def validate_card_for_payment_detail
+       payment_detail.validate_card if payment_detail
+  end 
+
+
+  # def purchase_options
+  #   {
+  #     :ip => ip_address #,
+  #     # :billing_address => {
+  #     #   :name     => "Ryan Bates",
+  #     #   :address1 => "123 Main St.",
+  #     #   :city     => "New York",
+  #     #   :state    => "NY",
+  #     #   :country  => "US",
+  #     #   :zip      => "10001"
+  #     # }
+  #   }
+  # end
+
+
+  # def payment_success?(payment_detail,price)
+  #   response = GATEWAY.purchase(price, credit_card(payment_detail),purchase_options)
+  #   response.success?
+  # end  
+
+
+  # def valid_card?(payment_detail)
+  #   unless credit_card(payment_detail).valid?
+  #     credit_card.errors.full_messages.each do |message|
+  #       errors.add_to_base message
+  #     end
+  #     false
+  #   else
+  #     true  
+  #   end
+  # end
+
+  # def credit_card(payment_detail)
+  #   @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
+  #     :type               => payment_detail["card_type"],
+  #     :number             => payment_detail["card_number"],
+  #     :verification_value => payment_detail["card_verification"],
+  #     :month              => 10,
+  #     :year               => "2018",
+  #     :first_name         => payment_detail["first_name"],
+  #     :last_name          => payment_detail["last_name"]
+  #   )
+  # end
+
+
+
+  ############################
 end

@@ -5,6 +5,8 @@ gem 'bcrypt-ruby'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails" 
+gem 'activemerchant'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -68,6 +70,8 @@ gem "nifty-generators", :group => :development
 gem "kaminari"
 gem "annotate"
 gem "devise" , "3.1.0"
+gem 'cancan'
+gem 'rolify'
 gem "thin"
 gem 'rmagick'
 gem 'carrierwave'

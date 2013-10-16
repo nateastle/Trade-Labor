@@ -27,6 +27,8 @@ TradeLabor::Application.routes.draw do
 
   get "welcome/index"
 
+  get "new_payment_detail" => "welcome#new_payment_detail"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,30 @@
+<%= fields_for payment_detail  do |pd| %>
+
+  <%#= pd.error_messages %>
+  <p>
+    <%= pd.label :first_name %><br />
+    <%= pd.text_field :first_name %>
+  </p>
+  <p>
+    <%= pd.label :last_name %><br />
+    <%= pd.text_field :last_name %>
+  </p>
+  <p>
+    <%= pd.label :card_type %><br />
+    <%= pd.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
+  </p>
+  <p>
+    <%= pd.label :card_number %><br />
+    <%= pd.text_field :card_number %>
+  </p>
+  <p>
+    <%= pd.label :card_verification, "Card Verification Value (CVV)" %><br />
+    <%= pd.text_field :card_verification %>
+  </p>
+  <p>
+    <%= pd.label :card_expires_on %><br />
+    <%= pd.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true, :class =>"select3", :order => [:day, :month, :year], :date_separator => "/" %>
+  </p>
+
+
+<% end %>

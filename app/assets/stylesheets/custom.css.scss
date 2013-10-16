@@ -722,6 +722,7 @@ form h3 {
   font-size: 14px;
   line-height: 20px;
   border-bottom: 1px solid #999999;
+  width: 225px;
 }
 .hero_bar .container-fluid,
 .header_bar .container-fluid {
@@ -963,4 +964,33 @@ ul.token-input-list-facebook{
  border:1px solid #ccc; 
  background:#eee;
  margin:5px 0; 
- padding:10px 20px; }
+ padding:10px 20px; 
+ clear: both;
+ }
+
+
+
+.inline_check_boxes label {
+  margin-left: 20px !important;
+}
+
+.inline_check_boxes input[type="checkbox"]{
+    margin: -49px 0 0 0 !important; 
+}
+
+.sign-up-left{
+  width:220px; 
+}
+
+.sign-up-left div ul{
+  list-style-type: none;
+   margin-left: 0px;
+}
+
+.sign-up-left div ul li {
+    line-height: 40px;
+}
+
+.sign-up-left div ul li input[type="radio"] {
+    margin: 0 9px 0 0 !important;
+}

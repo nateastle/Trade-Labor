@@ -5,8 +5,14 @@
 
 	<%= form_for(resource, :controllers => {:registrations => "newregistrations" }, :as => resource_name, :url => registration_path(resource_name) ,  :validate => true) do |f| %>
 	 
-	   <%#= f.error_notification %>
-	   <%= render :partial => 'shared/error_messages', :locals => {:target => resource}%>
+	   <%= render :partial => 'shared/error_messages', :locals => {:target => resource }%>
+
+     <% if resource.payment_detail && !resource.payment_detail.errors.full_messages.blank? %> 
+          <h5>Error in Payment</h5>
+          <ul><% resource.payment_detail.errors.full_messages.each do |msg| %><li><%= msg %></li>
+          <% end %></ul>
+          <%#= render :partial => 'shared/error_messages', :locals => {:target => resource.payment_detail }%>
+     <%end%> 
 
 	   <%= render :partial => 'form', :locals => {:f => f}%>
 
@@ -20,3 +26,23 @@
 </div>
 
 
+<script>
+  $("#business , #premium").click(function(){
+
+    $.ajax({
+              type: "GET",
+              url: "<%= new_payment_detail_url %>"
+                })
+              .done(function( data ) {
+                  $( "#payment_detail" ).html( data );
+                  $( "#payment_detail" ).slideDown();
+          });         
+  });
+
+
+ $("#basic").click(function(){
+       $("#payment_detail").slideUp();
+       $("#payment_detail").html("");
+  });
+
+</script>
