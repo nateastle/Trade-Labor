@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
   end
 
   def save_with_payment(payment_detail) 
-    debugger        
+       
     if valid? 
       if membership == Role::ROLES[:business][:name] || membership == Role::ROLES[:premium][:name]
         if valid_card?(payment_detail) && payment_success?(payment_detail,Role::ROLES[membership.to_sym][:price]) 
@@ -115,9 +115,6 @@ class User < ActiveRecord::Base
       false
   end 
 
-
-
-
   def save_with_payment
 
         if membership.to_s == Role::ROLES[:business][:name]  ||  membership.to_s == Role::ROLES[:premium][:name]           
@@ -133,59 +130,10 @@ class User < ActiveRecord::Base
         return false 
   end 
 
-  ######### Private  ########## 
   private
 
   def validate_card_for_payment_detail
        payment_detail.validate_card if payment_detail
   end 
 
-
-  # def purchase_options
-  #   {
-  #     :ip => ip_address #,
-  #     # :billing_address => {
-  #     #   :name     => "Ryan Bates",
-  #     #   :address1 => "123 Main St.",
-  #     #   :city     => "New York",
-  #     #   :state    => "NY",
-  #     #   :country  => "US",
-  #     #   :zip      => "10001"
-  #     # }
-  #   }
-  # end
-
-
-  # def payment_success?(payment_detail,price)
-  #   response = GATEWAY.purchase(price, credit_card(payment_detail),purchase_options)
-  #   response.success?
-  # end  
-
-
-  # def valid_card?(payment_detail)
-  #   unless credit_card(payment_detail).valid?
-  #     credit_card.errors.full_messages.each do |message|
-  #       errors.add_to_base message
-  #     end
-  #     false
-  #   else
-  #     true  
-  #   end
-  # end
-
-  # def credit_card(payment_detail)
-  #   @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
-  #     :type               => payment_detail["card_type"],
-  #     :number             => payment_detail["card_number"],
-  #     :verification_value => payment_detail["card_verification"],
-  #     :month              => 10,
-  #     :year               => "2018",
-  #     :first_name         => payment_detail["first_name"],
-  #     :last_name          => payment_detail["last_name"]
-  #   )
-  # end
-
-
-
-  ############################
 end
