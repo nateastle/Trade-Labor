@@ -35,47 +35,27 @@ TradeLabor::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # config.after_initialize do
-  #   ActiveMerchant::Billing::Base.mode = :test
-  #   ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-  #     # :login => "ersandeep0610-facilitator_api1.gmail.com",
-  #     # :password => "1381692969",
-  #     # :signature => "AahmysjmaE8KfL4xMF9Hq6mOI2e5AJdf.rAx2Q4TVKW.4xqn9z.K9YMy"
+ 
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      :login => APP_CONFIG["paypal"]["login"],
+      :password => APP_CONFIG["paypal"]["password"],
+      :signature => APP_CONFIG["paypal"]["signature"]
+    )
+  end
 
-  #     :login => "cis.dev24-facilitator_api1.gmail.com",
-  #     :password => "1380554769",
-  #     :signature => "AWmiL0n2Q.LgoqBKe2M5kObkliMDAAOAgENnVrjQmsMxa7afaxX.qdAH"
-  #   )
 
-  #cis.dev24-facilitator_api1.gmail.com , 1380554769 , AWmiL0n2Q.LgoqBKe2M5kObkliMDAAOAgENnVrjQmsMxa7afaxX.qdAH
-  # Credit card number: 4769193760262317
-  # Credit card type: Visa
-  # Expiration date: 10/2018
-  
-  ######################################################
-  #ersandeep0610-facilitator_api1.gmail.com , 1381692969 , AahmysjmaE8KfL4xMF9Hq6mOI2e5AJdf.rAx2Q4TVKW.4xqn9z.K9YMy
+######## Business Pro ###########
+# Seller
+# :login => "ersandeep0610-facilitator_api1.gmail.com",
+# :password => "1381692969",
+# :signature => "AahmysjmaE8KfL4xMF9Hq6mOI2e5AJdf.rAx2Q4TVKW.4xqn9z.K9YMy"
 
-#======================
-    # config.after_initialize do
-    #   ActiveMerchant::Billing::Base.mode = :test
-    #   ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-    #     :login => "cis.dev24-facilitator_api1.gmail.com",
-    #     :password => "1380554769",
-    #     :signature => "AWmiL0n2Q.LgoqBKe2M5kObkliMDAAOAgENnVrjQmsMxa7afaxX.qdAH"
-    #   )
-    # end
+# Buyer
+#sandeep.srm acc    
+#Credential :
+# first = sandy , last = sharma , type = Visa,card_num = 4977684623696376 ,verification = 122 , expire = 2018 , 
 
-    config.after_initialize do
-      ActiveMerchant::Billing::Base.mode = :test
-      ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-        :login => "ersandeep0610-facilitator_api1.gmail.com",
-        :password => "1381692969",
-        :signature => "AahmysjmaE8KfL4xMF9Hq6mOI2e5AJdf.rAx2Q4TVKW.4xqn9z.K9YMy"
-      )
-    end
-#4977684623696376
-#4111111111111111
 
-#seller
-#4557334535936761
 end

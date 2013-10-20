@@ -10,10 +10,11 @@ class PaymentDetail < ActiveRecord::Base
 
   # validate :validate_card, :on => :create
 
-  def payment_success?
-    debugger
+  def payment_success?(amount)
+
     if credit_card.valid?
-  	    response = GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
+      debugger
+  	    response = GATEWAY.purchase(price_in_cents(amount), credit_card, purchase_options)
   	    #transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
   	    #user.update_attribute(:active, true) if response.success?
 
@@ -34,8 +35,9 @@ class PaymentDetail < ActiveRecord::Base
        false
   end
   
-  def price_in_cents
-    (180*100).round
+  def price_in_cents(amount)
+    # (amount*100).round
+    2
   end
 
 
@@ -51,22 +53,22 @@ class PaymentDetail < ActiveRecord::Base
   
   def purchase_options
     {
-      :ip => ip_address,
-      :billing_address => {
-        :name     => "sandeep sharma",
-        :address1 => "fdgfdg",
-        :city     => "gdfgdg",
-        :state    => "Madhya Pradesh",
-        :country  => "IN",
-        :zip      => "452001"
-      }
+      :ip => ip_address#,
+      # :billing_address => {
+      #   :name     => "sandeep sharma",
+      #   :address1 => "fdgfdg",
+      #   :city     => "gdfgdg",
+      #   :state    => "Madhya Pradesh",
+      #   :country  => "IN",
+      #   :zip      => "452001"
+      # }
     }
   end
   
   
   def credit_card
     @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
-      :type               => 'Visa',
+      :type               => card_type,
       :number             => card_number,
       :verification_value => card_verification,
       :month              => card_expires_on.month,

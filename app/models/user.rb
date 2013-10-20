@@ -95,30 +95,30 @@ class User < ActiveRecord::Base
     self.skill_ids = ids.split(",")
   end
 
-  def save_with_payment(payment_detail) 
+  # def save_with_payment(payment_detail) 
        
-    if valid? 
-      if membership == Role::ROLES[:business][:name] || membership == Role::ROLES[:premium][:name]
-        if valid_card?(payment_detail) && payment_success?(payment_detail,Role::ROLES[membership.to_sym][:price]) 
-           add_role Role::ROLES[membership.to_sym][:name].to_sym 
-           save!
-        end 
-      else  
-           add_role Role::ROLES[:basic][:name].to_sym
-           save!
-      end  
-    end
+  #   if valid? 
+  #     if membership == Role::ROLES[:business][:name] || membership == Role::ROLES[:premium][:name]
+  #       if valid_card?(payment_detail) && payment_success?(payment_detail,Role::ROLES[membership.to_sym][:price]) 
+  #          add_role Role::ROLES[membership.to_sym][:name].to_sym 
+  #          save!
+  #       end 
+  #     else  
+  #          add_role Role::ROLES[:basic][:name].to_sym
+  #          save!
+  #     end  
+  #   end
 
-    rescue exception => e
-      logger.error "Paypal error while creating customer: #{e.message}"
-      errors.add :base, "There was a problem with your credit card."
-      false
-  end 
+  #   rescue exception => e
+  #     logger.error "Paypal error while creating customer: #{e.message}"
+  #     errors.add :base, "There was a problem with your credit card."
+  #     false
+  # end 
 
   def save_with_payment
 
         if membership.to_s == Role::ROLES[:business][:name]  ||  membership.to_s == Role::ROLES[:premium][:name]           
-            if payment_detail.payment_success? 
+            if payment_detail.payment_success?(Role::ROLES[membership.to_sym][:price]) 
               add_role Role::ROLES[membership.to_sym][:name].to_sym 
               return true if save!
             end  
