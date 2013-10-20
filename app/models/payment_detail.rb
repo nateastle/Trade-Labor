@@ -13,7 +13,7 @@ class PaymentDetail < ActiveRecord::Base
   def payment_success?(amount)
 
     if credit_card.valid?
-      debugger
+      # debugger
   	    response = GATEWAY.purchase(price_in_cents(amount), credit_card, purchase_options)
   	    #transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
   	    #user.update_attribute(:active, true) if response.success?
