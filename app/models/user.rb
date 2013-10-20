@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
   validates_acceptance_of :terms_of_service, :allow_nil => false, :message => "Please accept the terms and conditions", :on => :create
   validate :valid_postal_code
   validate :membership , :presence => true
-  validates_inclusion_of :membership, in:  Role::ROLES.collect {|role| role[1][:name] }
-  validate :validate_card_for_payment_detail
+  validates_inclusion_of :membership, in:  Role::ROLES.collect {|role| role[1][:name] } , :on => :create
+  # validate :validate_card_for_payment_detail
 
 
   after_save :reindex_user!
@@ -132,8 +132,8 @@ class User < ActiveRecord::Base
 
   private
 
-  def validate_card_for_payment_detail
-       payment_detail.validate_card if payment_detail
-  end 
+  # def validate_card_for_payment_detail
+  #      payment_detail.validate_card if payment_detail 
+  # end 
 
 end

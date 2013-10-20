@@ -5,7 +5,8 @@ class PaymentDetail < ActiveRecord::Base
   attr_accessor :card_number, :card_verification
 
   belongs_to :user
-
+  validate :validate_card
+  
   #has_many :transactions, :class_name => "PaymentTransaction"
 
   # validate :validate_card, :on => :create
