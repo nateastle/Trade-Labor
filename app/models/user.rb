@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  rolify
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_one :schedule, :dependent => :destroy
   has_and_belongs_to_many :skills
   has_one :payment_detail 
+  belongs_to :role
 
   accepts_nested_attributes_for :skills
   accepts_nested_attributes_for :schedule
@@ -29,6 +30,8 @@ class User < ActiveRecord::Base
   validates_inclusion_of :membership, in:  Role::ROLES.collect {|role| role[1][:name] } , :on => :create
   # validate :validate_card_for_payment_detail
 
+  validate :validate_skills_on_role_basis
+
 
   after_save :reindex_user!
   before_save :set_name
@@ -42,6 +45,15 @@ class User < ActiveRecord::Base
        self.name = "#{first_name} #{last_name}".strip
   end  
 
+  def validate_skills_on_role_basis
+    unless role.blank?
+      if basic_user? 
+          errors.add(:skill_tokens, "Basic user is not allowed to add skills")  if skills.length > 0
+      elsif business_user?
+          errors.add(:skill_tokens, "Business user is allowed to add only one skills")  if skills.length > 1
+      end 
+    end   
+  end
 
   def valid_postal_code
      errors.add(:postal_code, "Postal code is invalid")  unless  zipcode
@@ -119,18 +131,36 @@ class User < ActiveRecord::Base
 
         if membership.to_s == Role::ROLES[:business][:name]  ||  membership.to_s == Role::ROLES[:premium][:name]           
             if payment_detail.payment_success?(Role::ROLES[membership.to_sym][:price]) 
-              add_role Role::ROLES[membership.to_sym][:name].to_sym 
+              add_role Role::ROLES[membership.to_sym][:name] 
               return true if save!
             end  
         elsif membership.to_s == Role::ROLES[:basic][:name]
-            add_role Role::ROLES[membership.to_sym][:name].to_sym
+            add_role Role::ROLES[membership.to_sym][:name]
             return true if save!
         end
         
         return false 
   end 
 
-  private
+  def role?(name)
+      role.name == name.to_s
+  end 
+
+  def basic_user?
+      role.name == Role::ROLES[:basic][:name]
+  end 
+
+  def business_user?
+      role.name == Role::ROLES[:business][:name]
+  end 
+
+  def premium_user?
+      role.name == Role::ROLES[:premium][:name]
+  end 
+
+  def add_role(name)
+       self.role_id = Role.find_by_name(name).id
+  end  
 
   # def validate_card_for_payment_detail
   #      payment_detail.validate_card if payment_detail 

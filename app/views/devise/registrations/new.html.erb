@@ -40,9 +40,16 @@
   });
 
 
- $("#basic").click(function(){
+  $("#basic").click(function(){
        $("#payment_detail").slideUp();
        $("#payment_detail").html("");
   });
+
+
+  if ($("#basic").is(':checked'))
+    { 
+       $("#payment_detail").remove();
+    }
+
 
 </script>

@@ -71,7 +71,7 @@ gem "kaminari"
 gem "annotate"
 gem "devise" , "3.1.0"
 gem 'cancan'
-gem 'rolify'
+
 gem "thin"
 gem 'rmagick'
 gem 'carrierwave'

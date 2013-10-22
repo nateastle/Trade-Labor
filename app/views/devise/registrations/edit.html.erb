@@ -27,10 +27,14 @@
             <%= f.label :last_name%>
             <%= f.text_field :last_name %>
         </div>
-        <div>
-            <%= f.label :skill_tokens , "Skills"%>
-            <%= f.text_field :skill_tokens , :data => {:load => resource.skills} %>
-        </div>
+
+        <% if  current_user.business_user? || current_user.premium_user? %>
+            <div>
+                <%= f.label :skill_tokens , "Skills"%>
+                <%= f.text_field :skill_tokens , :data => {:load => resource.skills} %>
+            </div>
+        <% end %>    
+
         <div>
             <%= f.label :address_1 %>
             <%= f.text_field :address_1 %>
@@ -100,3 +104,32 @@
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 
 <%= link_to "Back", :back %>
+
+
+<script>
+    $(function(){
+        
+       limit =  "<%= token_limit(current_user) %>"
+
+       if (limit == 'null')
+           {token_limit = null}
+       else if (limit == 1)
+           {token_limit = 1}
+       else
+           {token_limit = 0 }
+
+      $("#user_skill_tokens").tokenInput("/skills/autocomplete",
+        { queryParam: 'term' ,
+          propertyToSearch: "name",
+          theme: "facebook" ,
+          tokenLimit: token_limit ,
+          prePopulate: $("#user_skill_tokens").data('load')
+        });
+    
+      $(".token-input-list-facebook").siblings(".tooltip-validate").css("margin-left","405px");
+
+    });
+
+
+
+</script>
