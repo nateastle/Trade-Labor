@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
 	def index
-		@photos = current_user.photos
+        @user = User.find(params[:user_id])
+		@photos = @user.try('photos') || []
     end
     
     def show

@@ -4,8 +4,11 @@
 <p>This is the Photos (Index Action) page. To view/edit a photo, hover over and click on the thumbnail.<p>
 
 <br />
-<%= link_to 'Back', user_path(current_user) %> |
-<%= link_to 'Upload Photos', new_user_photo_path(current_user) %> |
+<%= link_to 'Back', user_path(@user) %> 
+
+<% if current_user && current_user.id ==  @user.id %>
+ | <%= link_to 'Upload Photos', new_user_photo_path(@user) %> |
+<% end %>
 
 <br />
 <div id="gallery">
