@@ -1,11 +1,11 @@
 <% provide(:title, @user.name) %>
 <h1>
-  <%= @user.get_name %>
+  <%= @user.name %>
 </h1>
 
 <p>
 	<b>Name: </b>
-	<%= @user.get_name %>
+	<%= @user.name %>
 </p>
 
 <p>
@@ -41,10 +41,13 @@
 	<%= @user.cell_phone %>
 </p>
 
-<p>
-
-	<%= link_to 'Edit Profile', edit_user_registration_path %>
-</p>
-<p>
-<%= link_to 'Photos Viewer', user_photos_path(current_user) %>
+<% if current_user && current_user.id == @user.id %>
+	<p>
+		<%= link_to 'Edit Profile', edit_user_registration_path %>
 	</p>
+<% end %>	
+
+
+<p>
+  <%= link_to 'Photos Viewer', user_photos_path(@user)  %>
+</p>

@@ -1,33 +1,60 @@
 class User < ActiveRecord::Base
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
-  :postal_code, :name, :first_name, :last_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service ,:schedule_attributes
+  :postal_code, :name, :first_name, :last_name,:business_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service ,:schedule_attributes,:skill_tokens,:membership,:ip_address
+
+  attr_accessor :membership , :ip_address
+
+  attr_reader :skill_tokens
 
   has_many :photos, :dependent => :destroy 
   has_one :schedule, :dependent => :destroy
   has_and_belongs_to_many :skills
+  has_one :payment_detail 
+  belongs_to :role
+
   accepts_nested_attributes_for :skills
   accepts_nested_attributes_for :schedule
   accepts_nested_attributes_for :photos
 
-  after_save :reindex_user!
- 
   validates_uniqueness_of :email
-  validates :email, :first_name, :last_name, :address_1, :city, :state ,:postal_code, :presence => true
+  validates :email, :first_name, :last_name, :address_1, :city, :state ,:postal_code, :business_name ,:presence => true
   validates_confirmation_of :password
   validates :postal_code, numericality: { only_integer: true }
   validates_acceptance_of :terms_of_service, :allow_nil => false, :message => "Please accept the terms and conditions", :on => :create
-
-
   validate :valid_postal_code
+  validate :membership , :presence => true
+  validates_inclusion_of :membership, in:  Role::ROLES.collect {|role| role[1][:name] } , :on => :create
+  # validate :validate_card_for_payment_detail
+
+  validate :validate_skills_on_role_basis
+
+
+  after_save :reindex_user!
+  before_save :set_name
 
   RADIUS = 25 
 
   # TODO : We can calculcate lat , long at the time of registration so we will
   #not need a saprate zipcoe model and an "additional query".
   
+  def set_name
+       self.name = "#{first_name} #{last_name}".strip
+  end  
+
+  def validate_skills_on_role_basis
+    unless role.blank?
+      if basic_user? 
+          errors.add(:skill_tokens, "Basic user is not allowed to add skills")  if skills.length > 0
+      elsif business_user?
+          errors.add(:skill_tokens, "Business user is allowed to add only one skills")  if skills.length > 1
+      end 
+    end   
+  end
+
   def valid_postal_code
      errors.add(:postal_code, "Postal code is invalid")  unless  zipcode
   end
@@ -55,10 +82,6 @@ class User < ActiveRecord::Base
     [address_1, address_2, city, state, postal_code].select {|x| x.present?}.join(', ')
   end
  
-  def get_name
-     "#{first_name} #{last_name}".strip
-  end  
-
 
   def self.find_users(query ,current_user)
     if current_user 
@@ -79,5 +102,68 @@ class User < ActiveRecord::Base
   def reindex_user!
       Sunspot.index! self
   end
+
+  def skill_tokens=(ids)
+    self.skill_ids = ids.split(",")
+  end
+
+  # def save_with_payment(payment_detail) 
+       
+  #   if valid? 
+  #     if membership == Role::ROLES[:business][:name] || membership == Role::ROLES[:premium][:name]
+  #       if valid_card?(payment_detail) && payment_success?(payment_detail,Role::ROLES[membership.to_sym][:price]) 
+  #          add_role Role::ROLES[membership.to_sym][:name].to_sym 
+  #          save!
+  #       end 
+  #     else  
+  #          add_role Role::ROLES[:basic][:name].to_sym
+  #          save!
+  #     end  
+  #   end
+
+  #   rescue exception => e
+  #     logger.error "Paypal error while creating customer: #{e.message}"
+  #     errors.add :base, "There was a problem with your credit card."
+  #     false
+  # end 
+
+  def save_with_payment
+
+        if membership.to_s == Role::ROLES[:business][:name]  ||  membership.to_s == Role::ROLES[:premium][:name]           
+            if payment_detail.payment_success?(Role::ROLES[membership.to_sym][:price]) 
+              add_role Role::ROLES[membership.to_sym][:name] 
+              return true if save!
+            end  
+        elsif membership.to_s == Role::ROLES[:basic][:name]
+            add_role Role::ROLES[membership.to_sym][:name]
+            return true if save!
+        end
+        
+        return false 
+  end 
+
+  def role?(name)
+      role.name == name.to_s
+  end 
+
+  def basic_user?
+      role.name == Role::ROLES[:basic][:name]
+  end 
+
+  def business_user?
+      role.name == Role::ROLES[:business][:name]
+  end 
+
+  def premium_user?
+      role.name == Role::ROLES[:premium][:name]
+  end 
+
+  def add_role(name)
+       self.role_id = Role.find_by_name(name).id
+  end  
+
+  # def validate_card_for_payment_detail
+  #      payment_detail.validate_card if payment_detail 
+  # end 
 
 end

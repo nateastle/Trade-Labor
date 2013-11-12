@@ -576,6 +576,7 @@ footer .container {
   background: #E9E9E9;
 }
 .container-fluid {
+  margin-top: 10px;
   margin-right: auto;
   margin-left: auto;
   max-width: 940px;
@@ -598,6 +599,9 @@ footer .container {
 .logo {
   height: 65px;
 }
+#logo-image:hover {
+  background-color: transparent !important;;
+}
 .span4.logo h1 {
   line-height: 21px;
 }
@@ -617,7 +621,7 @@ h3 span {
 .logo {
   width: 254px;
   margin-left: 5px;
-  margin-top: 15px;
+  margin-bottom: 15px;
   float: left;
 }
 .logo a {
@@ -718,6 +722,7 @@ form h3 {
   font-size: 14px;
   line-height: 20px;
   border-bottom: 1px solid #999999;
+  width: 225px;
 }
 .hero_bar .container-fluid,
 .header_bar .container-fluid {
@@ -945,4 +950,47 @@ footer {
       margin-left: 10px;
     }
   }
+}
+
+ul.token-input-list-facebook{
+  min-height: 62px !important;
+  min-width: 220px !important;
+}
+
+#terms-pane {
+ width:800px; 
+ height:200px; 
+ overflow:scroll; 
+ border:1px solid #ccc; 
+ background:#eee;
+ margin:5px 0; 
+ padding:10px 20px; 
+ clear: both;
+ }
+
+
+
+.inline_check_boxes label {
+  margin-left: 20px !important;
+}
+
+.inline_check_boxes input[type="checkbox"]{
+    margin: -49px 0 0 0 !important; 
+}
+
+.sign-up-left{
+  width:220px; 
+}
+
+.sign-up-left div ul{
+  list-style-type: none;
+   margin-left: 0px;
+}
+
+.sign-up-left div ul li {
+    line-height: 40px;
+}
+
+.sign-up-left div ul li input[type="radio"] {
+    margin: 0 9px 0 0 !important;
 }

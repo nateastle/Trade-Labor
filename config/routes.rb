@@ -2,7 +2,11 @@ TradeLabor::Application.routes.draw do
   resources :search_suggestions
 
 
-  resources :skills
+  resources :skills do
+    collection do
+      get 'autocomplete' , :action => 'autocomplete'
+    end  
+  end  
 
 
   get "schedule/new"
@@ -22,6 +26,8 @@ TradeLabor::Application.routes.draw do
   root :to => "welcome#index"
 
   get "welcome/index"
+
+  get "new_payment_detail" => "welcome#new_payment_detail"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

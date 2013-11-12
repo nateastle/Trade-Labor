@@ -8,4 +8,8 @@ class WelcomeController < ApplicationController
     @user = User.find(params[:id])
     
   end
+
+  def new_payment_detail
+    render :partial => 'devise/registrations/payment_detail' ,:locals => {:payment_detail => PaymentDetail.new} ,  :layout => false and return 
+  end
 end

@@ -34,4 +34,28 @@ TradeLabor::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+ 
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      :login => APP_CONFIG["paypal"]["login"],
+      :password => APP_CONFIG["paypal"]["password"],
+      :signature => APP_CONFIG["paypal"]["signature"]
+    )
+  end
+
+
+######## Business Pro ###########
+# Seller
+# :login => "ersandeep0610-facilitator_api1.gmail.com",
+# :password => "1381692969",
+# :signature => "AahmysjmaE8KfL4xMF9Hq6mOI2e5AJdf.rAx2Q4TVKW.4xqn9z.K9YMy"
+
+# Buyer
+#sandeep.srm acc    
+#Credential :
+# first = sandy , last = sharma , type = Visa,card_num = 4977684623696376 ,verification = 122 , expire = 2018 , 
+
+
 end

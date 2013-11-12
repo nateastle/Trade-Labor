@@ -16,3 +16,9 @@
 //= require twitter/bootstrap
 //= require_tree .
 //= require rails.validations.simple_form
+//= require jquery.tokeninput
+
+
+
+// Searcg box by token input field
+  

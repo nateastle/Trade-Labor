@@ -1,32 +1,30 @@
 class NewregistrationsController < Devise::RegistrationsController
-  # def new
-  #   #super
-  #   resource = build_resource({})
-  #   resource.build_schedule
-  #   respond_with resource
-    
-  # end
 
-  # def show
-  #   resource.schedule || resource.build_schedule
-  #   super
-  # end
+  def create    
+    resource = build_resource(sign_up_params)
 
-  # def create
-  #   resource = build_resource(params[:user])
-  #   resource.build_schedule(params[:schedule])
-  #   #@schedules = resource.schedules.new(params[:schedules])
-  #   #@schedules.save
-  #   if(resource.save)
+    if params[:payment_detail]
+        payment_detail = resource.build_payment_detail(params[:payment_detail])
+        payment_detail.ip_address = request.remote_ip
+    end
+   
+    if resource.valid? && resource.save_with_payment
+        if resource.active_for_authentication?
+            set_flash_message :notice, :signed_up if is_navigational_format?
+            sign_up(resource_name, resource)
+            respond_with resource, :location => after_sign_up_path_for(resource)
+        else
+            set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
+            expire_session_data_after_sign_in!
+            respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+        end
+    else
+        clean_up_passwords resource
+        #respond_with resource   
+        render :new
+    end
 
-  #     sign_in(resource_name, resource)
-  #     respond_with resource, :location => after_sign_up_path_for(resource)
-  #   else
-  #     render :action => "new"
-  #   end
-
-
-  # end
+  end 
 
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)

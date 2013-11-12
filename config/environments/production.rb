@@ -61,7 +61,13 @@ TradeLabor::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # Log the query plan for queries taking more than this (works
-  # with SQLite, MySQL, and PostgreSQL)
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      :login => APP_CONFIG["paypal"]["login"],
+      :password => APP_CONFIG["paypal"]["password"],
+      :signature => APP_CONFIG["paypal"]["signature"]
+    )
+  end
+
 end
