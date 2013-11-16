@@ -1,0 +1,3 @@
+$('#<%= @business.wrapper_dom_id(params) %>').
+replaceWith('<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)},:dimension => params[:dimension] %>');
+// show_flash_message("Thank you for providing your valuable feedback!",'notice')

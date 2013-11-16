@@ -21,6 +21,9 @@ TradeLabor::Application.routes.draw do
   resources :users,only:[:show] do
     resources :photos, :except => [:update, :edit]
     resource :schedule
+    member do
+      post 'rate' , :action => 'rate'
+    end  
   end
   resources :zipcodes
   root :to => "welcome#index"

@@ -51,3 +51,12 @@
 <p>
   <%= link_to 'Photos Viewer', user_photos_path(@user)  %>
 </p>
+
+
+
+Global Rating : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  @user.rating_average , :percent_rate => ((@user.rating_average/5)*100) } %>
+
+
+<% if current_user && (current_user.id != @user.id) && !current_user.already_rated?(@user) %>
+	<%= render :partial => 'feedback'%>
+<% end %>	
