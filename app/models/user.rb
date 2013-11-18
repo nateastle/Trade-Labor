@@ -16,6 +16,14 @@ class User < ActiveRecord::Base
   has_one :payment_detail 
   belongs_to :role
 
+
+  has_many :employee_businesses , :foreign_key => 'employee_id' , :class_name => "Business"
+  has_many :employer_businesses , :foreign_key => 'employer_id', :class_name => "Business"
+
+  has_many :employer , through: :business , :source => :user
+  has_many :employee , through: :business , :source => :user
+
+
   accepts_nested_attributes_for :skills
   accepts_nested_attributes_for :schedule
   accepts_nested_attributes_for :photos
@@ -37,6 +45,9 @@ class User < ActiveRecord::Base
   before_save :set_name
 
   RADIUS = 25 
+
+
+  ajaxful_rater
 
   # TODO : We can calculcate lat , long at the time of registration so we will
   #not need a saprate zipcoe model and an "additional query".
@@ -165,5 +176,21 @@ class User < ActiveRecord::Base
   # def validate_card_for_payment_detail
   #      payment_detail.validate_card if payment_detail 
   # end 
+
+
+
+  # Rating
+
+  #TODO Remove this manual code from here , It is only for testing purpose.
+  def find_or_create_business_with_current_user(user)
+      business = Business.find_by_employee_id_and_employer_id(self.id,user.id)
+      business.blank? ? Business.create(:employee_id => self.id, :employer_id =>user.id , :title => 'Test Business') : business
+  end  
+
+  def already_rated?(emp)
+        business_ary = Business.where("employer_id = ? and employee_id = ?",self.id,emp.id)
+        business_ary.blank? ? false : (Rate.where("rater_id = ? and rateable_id = ?",self.id,business_ary.first.id).blank? ? false : true)
+  end  
+
 
 end

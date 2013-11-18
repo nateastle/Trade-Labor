@@ -8,6 +8,8 @@ gem "twitter-bootstrap-rails"
 gem 'activemerchant'
 gem 'font_assets'
 
+# Rating System
+gem 'ajaxful_rating' , :git => "git://github.com/edgarjs/ajaxful-rating.git", :branch => 'rails3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
