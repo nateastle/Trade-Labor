@@ -8,13 +8,17 @@
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
 // Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
 //       have the proper paths. So for now we use the absolute path.
-@fontAwesomeEotPath: asset-path("fontawesome-webfont.eot?v=3.0.2");
-@fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot?#iefix&v=3.0.2");
-@fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff?v=3.0.2");
-@fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf?v=3.0.2");
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
 
 // Font Awesome
-@import "fontawesome";
+@import "fontawesome/font-awesome";
+
+// Font Awesome
+
 
 // Glyphicons
 //@import "twitter/bootstrap/sprites.less";
@@ -29,3 +33,58 @@
 //
 // Example:
 // @linkColor: #ff0000;
+
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  *zoom: 1;
+}
+
+.container:before,
+.container:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.container:after {
+  clear: both;
+}
+
+.container-fluid {
+  padding-right: 20px;
+  padding-left: 20px;
+  *zoom: 1;
+}
+
+.container-fluid:before,
+.container-fluid:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.container-fluid:after {
+  clear: both;
+}
+
+.navbar .container {
+  width: auto;
+}
+
+
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  width: 940px;
+}
+
+
+
+.container,
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  width: 940px;
+}

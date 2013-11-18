@@ -6,6 +6,7 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails" 
 gem 'activemerchant'
+gem 'font_assets'
 
 # Rating System
 gem 'ajaxful_rating' , :git => "git://github.com/edgarjs/ajaxful-rating.git", :branch => 'rails3'
@@ -19,8 +20,8 @@ gem 'pg_search'
 gem 'jquery-tokeninput-rails'
 
 #### Solr specific start ######
-gem 'sunspot_rails' #, '~>2.0.0.pre'
-gem 'sunspot_solr', :group => :development
+gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
+gem 'sunspot_solr', github: 'sunspot/sunspot', branch: 'master'
 gem 'progress_bar'
 #### Solr specific end ######
 

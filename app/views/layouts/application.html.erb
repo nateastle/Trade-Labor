@@ -14,16 +14,22 @@
     <%= yield(:head) %>
   </head>
 
-  <body>
+
+<body>
+  <div class="main-frame">
+    <div class="container">
+
       <%= render 'layouts/header' %>
-      <div class="container">
+    
         <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
         <% end %>
-        
+
         <%= yield %>
-        
+
         <%= render 'layouts/footer' %>
-      </div>
-  </body>
+    </div>
+  </div>
+  Ï
+</body>
 </html>

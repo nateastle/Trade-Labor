@@ -15,4 +15,9 @@
 /tmp
 /db/*.sqllite3
 /vendor/*
+<<<<<<< HEAD
+/solr/data/*
+/log/*
+=======
 solr/data/*
+>>>>>>> origin/solr
