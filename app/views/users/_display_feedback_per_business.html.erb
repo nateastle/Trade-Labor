@@ -1,0 +1,24 @@
+Avg rating per business : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  @business.average_rating , :percent_rate => (100*(@business.average_rating/5)) } %>
+
+
+<br/>
+<br/>
+<h2>Feedback </h2><br/>
+
+<% unless rating_per_criteria_hash.blank? %>
+	Experience : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:experience] , :percent_rate => (100*rating_per_criteria_hash[:experience]/5) } %>
+
+	Professionalism : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:professionalism] , :percent_rate => (100*rating_per_criteria_hash[:professionalism]/5) } %>
+
+	Timeliness : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:timeliness] , :percent_rate => (100*rating_per_criteria_hash[:timeliness]/5) } %>
+
+
+	Price : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:price] , :percent_rate => (100*rating_per_criteria_hash[:price]/5) } %>
+
+	Quality Of Work : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:workquality] , :percent_rate => (100*rating_per_criteria_hash[:workquality]/5) } %>
+<% else %>
+
+<% end %>
+<br/>
+<br/>
+<br/>

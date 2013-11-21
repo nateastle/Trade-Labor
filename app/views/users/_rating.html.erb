@@ -1,0 +1,14 @@
+Global Rating : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  @user.rating_average , :percent_rate => ((@user.rating_average/5)*100) } %>
+
+
+<% if current_user && (current_user.id != @user.id)  %>
+   <% if current_user.already_rated?(@user) %>
+   		<%= render :partial => 'display_feedback_per_business' , :locals=>{:rating_per_criteria_hash => rating_per_criteria(@business) }%>
+   <%else%>	
+		<%= render :partial => 'form_for_feedback'%>
+   <% end %>	
+<% elsif @business %>
+   <% @user.employee_businesses.each do |business| %>
+   		<%= render :partial => 'display_feedback_per_business' , :locals=>{:rating_per_criteria_hash => rating_per_criteria(business) }%>
+   <% end %>	
+<% end %>	

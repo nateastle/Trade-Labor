@@ -1,0 +1,16 @@
+<br/>
+<h2>Feedback </h2><br/>
+
+Experience : <%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :experience %>
+
+Professionalism : <%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :professionalism %>
+
+Timeliness : <%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :timeliness %>
+
+Price : <%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :price %>
+
+Quality Of Work : <%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :workquality %>
+
+<br/>
+<br/>
+<br/>

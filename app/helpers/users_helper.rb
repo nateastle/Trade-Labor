@@ -13,5 +13,10 @@ module UsersHelper
 
   end  
 
-  
+
+  def rating_per_criteria(business) 
+      rating_per_criteria_hash = {}
+      Rate.where("rateable_id=? and rateable_type = ?" ,business.id,'Business').collect{|t|  rating_per_criteria_hash[t.dimension.to_sym]  = t.stars }
+      rating_per_criteria_hash
+  end
 end

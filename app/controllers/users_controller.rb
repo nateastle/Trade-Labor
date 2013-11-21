@@ -2,7 +2,11 @@ class UsersController < ApplicationController
 	def show
 		 @user = User.find(params[:id])
 		 #TODO Remove this manual code from here , It is only for testing purpose.
-		 @business = @user.find_or_create_business_with_current_user(current_user) if current_user && (current_user.id != @user.id)
+		 if current_user && (current_user.id != @user.id)
+		 	@business =  @user.find_or_create_business_with_current_user(current_user) 
+		 else
+		 	@business = @user.employee_businesses.try(:first)		 	
+		 end	
 	end
 
 	def rate

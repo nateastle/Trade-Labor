@@ -53,10 +53,6 @@
 </p>
 
 
-
-Global Rating : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  @user.rating_average , :percent_rate => ((@user.rating_average/5)*100) } %>
-
-
-<% if current_user && (current_user.id != @user.id) && !current_user.already_rated?(@user) %>
-	<%= render :partial => 'feedback'%>
-<% end %>	
+<div class='rating'>
+  <%= render :partial => 'rating'%> 
+</div>

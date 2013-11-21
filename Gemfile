@@ -20,8 +20,8 @@ gem 'pg_search'
 gem 'jquery-tokeninput-rails'
 
 #### Solr specific start ######
-gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
-gem 'sunspot_solr', github: 'sunspot/sunspot', branch: 'master'
+gem 'sunspot_rails' ,'2.1.0' #, github: 'sunspot/sunspot', branch: 'master'
+gem 'sunspot_solr' , '2.1.0'#, github: 'sunspot/sunspot', branch: 'master'
 gem 'progress_bar'
 #### Solr specific end ######
 
