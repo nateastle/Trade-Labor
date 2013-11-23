@@ -7,6 +7,9 @@ class Role < ActiveRecord::Base
 
   def self.all_roles
   	Role::ROLES.collect {|k,v| v[:name]}
-  end	
+  end
 
+  def self.import
+     Role.all_roles.each { |role_name| Role.find_or_create_by_name(:name => role_name)}	
+  end    	
 end

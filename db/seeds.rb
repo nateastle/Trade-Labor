@@ -9,10 +9,12 @@
 puts "Seeding....Start"
 
 ZipCode.delete_all
+
 CSV.foreach("#{Rails.root}/lib/data/zip-codes-database-STANDARD.csv", :headers => :first_row) do |row|
   ZipCode.create!(row.to_hash)
 end
 
 Skill.import
+Role.import
 
 puts "Seeding....End"

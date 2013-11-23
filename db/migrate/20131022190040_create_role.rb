@@ -5,9 +5,6 @@ class CreateRole < ActiveRecord::Migration
       
       t.timestamps
     end
-
-  	Role.all_roles.each { |role_name| Role.create(:name => role_name)}
-
   end
 
   def down

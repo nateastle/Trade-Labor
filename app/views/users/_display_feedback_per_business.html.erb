@@ -1,4 +1,4 @@
-Avg rating per business : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  @business.average_rating , :percent_rate => (100*(@business.average_rating/5)) } %>
+Avg rating per business : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  business.average_rating , :percent_rate => (100*(business.average_rating/5)) } %>
 
 
 <br/>
