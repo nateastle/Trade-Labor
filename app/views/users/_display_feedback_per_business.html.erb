@@ -1,9 +1,10 @@
-Avg rating per business : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  business.average_rating , :percent_rate => (100*(business.average_rating/5)) } %>
+<br/>
+<h2>Feedback </h2>
 
+Average rating : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  business.average_rating , :percent_rate => (100*(business.average_rating/5)) } %>
 
 <br/>
 <br/>
-<h2>Feedback </h2><br/>
 
 <% unless rating_per_criteria_hash.blank? %>
 	Experience : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:experience] , :percent_rate => (100*rating_per_criteria_hash[:experience]/5) } %>
