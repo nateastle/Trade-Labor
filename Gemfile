@@ -65,6 +65,8 @@ gem 'jquery-rails', "< 3.0.0"
 group :development do
   gem "rails-erd"
   gem "debugger"
+  gem 'rvm-capistrano'
+  gem 'capistrano'
 end
 
 gem "rspec-rails", :group => [:development, :test]
