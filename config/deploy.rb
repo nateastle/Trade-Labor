@@ -34,8 +34,9 @@ load 'deploy/assets'
 
 server "dev.trade-labor.com", :app, :web, :db, :primary => true
 
-after 'deploy:update_code', 'deploy:symlink_shared'
 after "deploy:update", "deploy:cleanup" 
+before 'deploy:assets:precompile', 'deploy:symlink_shared'
+
 
 namespace :deploy do
   desc "Symlink shared configs and folders on each release."
@@ -48,3 +49,20 @@ namespace :deploy do
   end
 end
 
+namespace :solr do
+
+  desc "Start the solr server."
+  task :start do
+    
+  end
+
+  desc "Stop the solr server."
+  task :stop do
+    
+  end
+
+  desc "Restart the solr server."
+  task :restart do
+    
+  end
+end

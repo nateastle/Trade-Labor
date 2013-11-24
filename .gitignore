@@ -15,7 +15,7 @@
 /tmp
 /db/*.sqllite3
 /vendor/*
-/solr/data/*
 /log/*
-/solr/*
+/solr/data/*
 solr/development/*
+public/*
