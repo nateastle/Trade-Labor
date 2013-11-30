@@ -41,7 +41,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
     # Solr  
     run "ln -nfs #{shared_path}/solr #{current_path}/solr"
-    run "ls -al #{current_path}/solr/pids/"
+    #run "ls -al #{current_path}/solr/pids/"
   end
 
   desc "Create solr dir in shared path."
@@ -55,26 +55,28 @@ namespace :solr do
 
   desc "start solr"
   task :start, :roles => :app, :except => { :no_release => true } do 
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+    #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+    #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
   end
 
   desc "stop solr"
   task :stop, :roles => :app, :except => { :no_release => true } do 
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr stop --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+    #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr stop --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+    #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop"
   end
 
   desc "Restart the solr server."
   task :restart do
-      stop
-      start
+      #stop
+      #start
   end
 
   desc "reindex the whole database"
   task :reindex, :roles => :app do
-    stop
-    run "rm -rf #{shared_path}/solr/data"
-    start
-    run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
+    #stop
+    #run "rm -rf #{shared_path}/solr/data"
+    #start
+    #run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
   end
  
 end  

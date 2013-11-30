@@ -21,8 +21,13 @@ gem 'jquery-tokeninput-rails'
 
 #### Solr specific start ######
 gem 'sunspot_rails' ,'2.1.0' #, github: 'sunspot/sunspot', branch: 'master'
-gem 'sunspot_solr' , '2.1.0'#, github: 'sunspot/sunspot', branch: 'master'
+
+group :development do
+   gem 'sunspot_solr' , '2.1.0'#, github: 'sunspot/sunspot', branch: 'master'
+end
+
 gem 'progress_bar'
+
 #### Solr specific end ######
 
 gem 'simple_form'
