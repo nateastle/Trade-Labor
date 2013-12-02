@@ -303,7 +303,7 @@ DEPENDENCIES
   debugger
   devise (= 3.1.0)
   font_assets
-  jquery-rails (< 3.0.0)
+  jquery-rails
   jquery-tokeninput-rails
   kaminari
   less-rails

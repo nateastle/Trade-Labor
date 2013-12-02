@@ -21,4 +21,10 @@
 
 
 // Searcg box by token input field
-  
+$(function() {
+  $("#welcome_search input").keyup(function() {
+  	$.get($("#welcome_search").attr("action"), $("#welcome_search").serialize(), null, "script");
+    return false;
+  });
+});
+

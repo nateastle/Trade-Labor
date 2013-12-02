@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
-  :postal_code, :name, :first_name, :last_name,:business_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service ,:schedule_attributes,:skill_tokens,:membership,:ip_address
+  :postal_code, :name, :first_name, :last_name,:business_name, :address_1, :address_2, :city, :state, :contact_phone, :cell_phone, :skill_ids,:terms_of_service ,:schedule_attributes,:skill_tokens,:membership,:ip_address, :rating_average
 
   attr_accessor :membership , :ip_address
 
@@ -75,6 +75,10 @@ class User < ActiveRecord::Base
   end
   ######## Searchable block ########
   searchable do
+    text :first_name, :as => :first_name_textp  
+    text :last_name, :as => :first_name_textp 
+    text :business_name, :as => :first_name_textp 
+    text :email, :as => :first_name_textp  
     text :skills do
       skills.map { |skill| skill.name }
     end
@@ -96,16 +100,20 @@ class User < ActiveRecord::Base
 
   def self.find_users(query ,current_user)
     if current_user 
+      logger.fatal "Query is: " + query
        User.search do
         fulltext query
         with(:location).in_radius(current_user.zipcode.Latitude.to_f, current_user.zipcode.Longitude.to_f, RADIUS)
         paginate :page => 1, :per_page => 25
        end.results
+       logger.fatal "Logger count: " +  this.count.to_s
     else
        User.search do
+        logger.fatal "Query is: " + query
         fulltext query
         paginate :page => 1, :per_page => 25
        end.results
+
     end 
   end
   

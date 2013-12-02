@@ -1,78 +1,71 @@
+<%= form_tag root_path, :method =>'get', html: { autocomplete: 'off' }, :id => "welcome_search" do %>
+<div class="row-fluid">
+  <div class="search-box span12">
+    <h1>I’ m Looking For</h1>
+    <div class="search-bar">
+      <div class="search-input">
+        <span class="text">
+    <%= text_field_tag :search, params[:search],class: "span12 search_input", placeholder: "What type of work are you looking for?" %></div>
+      </span>
+      <span class="search-btn">
+        <input type="submit" name="" value="" />
+      </span>
+      <div id="welcomeres">
 
-            <div class="row-fluid">
-              <div class="search-box span12">
-                <h1>I’ m Looking For</h1>
-                <div class="search-bar">
-                  <div class="search-input">
-                    <span class="text">
-                      <%= text_field_tag :search, params[:search],class: "span12 search_input", placeholder: "What type of work are you looking for?" %></div>
-                  </span>
-                  <span class="search-btn">
-                    <input type="submit" name="" value="" />            
-                  </span>
-                </div>
-              </div>
-            </div>
-            </div>
+        <%= render 'welcome' %></div>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
+<div class="container-fluid home_content">
+<div class="row-fluid hero_bar">
+  <!-- start hero -->
+  <div class="span12">
+    <div class="row-fluid">
+      <br/>
 
-            <div class="container-fluid home_content">
-            <div class="row-fluid hero_bar">
-              <!-- start hero -->            
-              <div class="span12">
-                <div class="row-fluid">
-                  <br/>            
+      <div class="span9 offset1 home-hero">
 
-                  <div class="span9 offset1 home-hero">
+        <div class="row-fluid">
+          <div class="fea-frame">
+            <ul class="fea-list">
+              <li class="span4">
+                <h2 class="heading">
+                  <span class="img">
+                    <%= image_tag("dollar-img.png", :alt =>"dollar") %></span>
+                  <span class="text">earn money</span>
+                </h2>
+                <p>
+                  Get a free membership or earn big money selling for Trade-Labor
+                </p>
+                <span class="read-more">Read More...</span>
+              </li>
+              <li class="span4">
+                <h2 class="heading">
+                  <span class="img">
+                    <%= image_tag("lense-img.png", :alt =>"") %></span>
+                  <span class="text">BARTER SKILLS</span>
+                </h2>
+                <p>Find People to Barter your skill with</p>
+                <span class="read-more">Read More...</span>
+              </li>
+              <li class="span4">
+                <h2 class="heading">
+                  <span class="img">
+                    <%= image_tag("user-img.png", :alt =>"") %></span>
+                  <span class="text">REGISTER</span>
+                </h2>
+                <p>Browse and list your skills quickly and easily</p>
+                <span class="read-more">Read More...</span>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-                    <div class="row-fluid">
-                      <div class="fea-frame">
-                        <ul class="fea-list">
-                          <li class="span4">
-                            <h2 class="heading">
-                              <span class="img">
-                                <%= image_tag("dollar-img.png", :alt =>"dollar") %></span>
-                              <span class="text">earn money</span>
-                            </h2>
-                            <p>
-                              Get a free membership or earn big money selling for Trade-Labor
-                            </p>
-                            <span class="read-more">Read More...</span>
-                          </li>
-                          <li class="span4">
-                            <h2 class="heading">
-                              <span class="img">
-                                <%= image_tag("lense-img.png", :alt =>"") %></span>
-                              <span class="text">BARTER SKILLS</span>
-                            </h2>
-                            <p>Find People to Barter your skill with</p>
-                            <span class="read-more">Read More...</span>
-                          </li>
-                          <li class="span4">
-                            <h2 class="heading">
-                              <span class="img">
-                                <%= image_tag("user-img.png", :alt =>"") %></span>
-                              <span class="text">REGISTER</span>
-                            </h2>
-                            <p>Browse and list your skills quickly and easily</p>
-                            <span class="read-more">Read More...</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
-            <!-- end hero -->            
-            <div id="users">
-            <% @users.each do |user| %>            
-            <h2>
-              <%= link_to user.name, user %></h2>
-            <div class="info">
-              by
-              <%= user.first_name %>            
-              on
-              <%= user.last_name %></div>
-            <% end %></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- end hero -->

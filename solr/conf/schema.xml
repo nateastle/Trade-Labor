@@ -119,6 +119,18 @@
 
     <!-- A specialized field for geospatial search. If indexed, this fieldType must not be multivalued. -->
     <fieldType name="location" class="solr.LatLonType" subFieldSuffix="_coordinate"/>
+
+    <fieldType class="solr.TextField" name="text_pre" positionIncrementGap="100">
+  <analyzer type="index">
+    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+    <filter class="solr.LowerCaseFilterFactory"/>
+            <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="25" />
+  </analyzer>
+  <analyzer type="query">
+    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+    <filter class="solr.LowerCaseFilterFactory"/>
+  </analyzer>
+</fieldType>
   </types>
   <fields>
     <!-- Valid attributes for fields:
@@ -150,6 +162,7 @@
     <!-- Customized fileds start -->
       <dynamicField name="*_skill" stored="false" type="skill" multiValued="true" indexed="true"/>
       <dynamicField name="*_postal_code" stored="false" type="postal_code" indexed="true"/>
+      <dynamicField name="*_textp" stored="false" type="text_pre" multiValued="true" indexed="true"/>
     <!-- Customized fileds end -->
 
     <!-- *** This field is used by Sunspot! *** -->
