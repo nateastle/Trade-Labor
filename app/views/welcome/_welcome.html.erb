@@ -22,7 +22,7 @@
 		<% if user.skills %>
 		Skills:
 		<% user.skills.try(:each) do |skill| %>
-		skill.name
+		<%= skill.name =>
 		<% end %>
 		<% end %></div>
 	<% end %>
