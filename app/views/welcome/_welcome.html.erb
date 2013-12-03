@@ -1,29 +1,31 @@
 <div id="users">
 	<% if @users %>
-
-	<% @users.try(:each) do |user| %>
-	<h2>
-		<%= link_to user.business_name, user %></h2>
-	<div class="info">
-		Name:
-		<%= user.first_name %>
-		<%= user.last_name %>
-		<br>
-		Address:
-		<%= user.address_1  %>
-		<%= user.address_2 %>
-		<br>
-		<%= user.city %>
-		,
-		<%= user.postal_code %>
-		,
-		<%= user.state %>
-		<br>
-		<% if user.skills %>
-		Skills:
-		<% user.skills.try(:each) do |skill| %>
-		<%= skill.name =>
+		<% @users.try(:each) do |user| %>
+			<h2> 
+				<%= link_to user.business_name, user %>
+			</h2>
+			<div class="info">
+				Name:
+				<%= user.first_name %>
+				<%= user.last_name %>
+				<br>
+				Address:
+				<%= user.address_1  %>
+				<%= user.address_2 %>
+				<br>
+				<%= user.city %>
+				,
+				<%= user.postal_code %>
+				,
+				<%= user.state %>
+				<br>
+				<% if user.skills %>
+					Skills:
+					<% user.skills.try(:each) do |skill| %>
+						<%= skill.name %>
+					<% end %>
+				<% end %>
+			</div>
 		<% end %>
-		<% end %></div>
 	<% end %>
-	<% end %></div>
+</div>

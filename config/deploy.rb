@@ -52,36 +52,45 @@ namespace :deploy do
 end
 
 namespace :solr do
-
-  desc "start solr"
-  task :start, :roles => :app, :except => { :no_release => true } do 
-    #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
-    #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
-  end
-
-  desc "stop solr"
-  task :stop, :roles => :app, :except => { :no_release => true } do 
-    #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr stop --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
-    #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop"
-  end
-
-  desc "Restart the solr server."
-  task :restart do
-      #stop
-      #start
+  [:stop, :start, :restart ].each do |action|
+    desc "#{action.to_s.capitalize} Solr"
+    task action, :roles => :web do
+      invoke_command "sudo /etc/init.d/solr #{action.to_s}", :via => run_method
+    end
   end
 
   desc "reindex the whole database"
   task :reindex, :roles => :app do
-    #stop
-    #run "rm -rf #{shared_path}/solr/data"
-    #start
-    #run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
+    run "cd #{current_path} && #{rake} RAILS_ENV=#{rails_env} sunspot:solr:reindex" 
   end
  
 end  
+
+namespace :apache do
+  [:stop, :start, :restart, :reload].each do |action|
+    desc "#{action.to_s.capitalize} Apache"
+    task action, :roles => :web do
+      invoke_command "sudo /etc/init.d/httpd #{action.to_s}", :via => run_method
+    end
+  end
+end
+
+
+namespace :passenger do  
+  desc "Restart Application"  
+  task :restart do  
+    run "touch #{current_path}/tmp/restart.txt"  
+  end  
+end  
+  
+# after :deploy, "passenger:restart"  
+
 
 after "deploy:update", "deploy:cleanup" 
 after 'deploy:setup', 'deploy:setup_solr_data_dir'
 before 'deploy:assets:precompile', 'deploy:symlink_shared'
 
+# cap apache:stop
+# cap apache:start
+# cap apache:restart
+# cap apache:reload
