@@ -1,58 +1,28 @@
-<% provide(:title, @user.name) %>
-<h1>
-  <%= @user.name %>
-</h1>
+<% content_for :head do %>
+  <% provide(:title, @user.name) %>
+<% end %>
 
-<p>
-	<b>Name: </b>
-	<%= @user.name %>
-</p>
+<div id="continer">
 
-<p>
-<b>Email: </b>
-	<%= @user.email %>
-</p>
-<p>
-<b>Business: </b>
-	<%= @user.name %>
+	<!-- First Div Start-->
+		<%= render :partial => "profile"%>	
+	<!-- First Div End-->
 
-</p>
-<b>First Name: </b>
-	<%= @user.first_name %>
-</p>
-<b>Last Name: </b>
-	<%= @user.last_name %>
-</p>
-<b>Address : </b>
-	<%= @user.address_1 %>
-</p>
-<b>City: </b>
-	<%= @user.city %>
-</p>
-<b>Zip Code: </b>
-	<%= @user.postal_code %>
-</p>
-<b>Contact Phone: </b>
-	<%= @user.contact_phone %>
-</p>
+	<!-- Second Div Start-->
+		<%= render :partial => "middle_content"%>	
+	<!-- Second Div End-->
 
-<p>
-<b>Cell Phone: </b>
-	<%= @user.cell_phone %>
-</p>
+	<!-- Third Div Start-->
+		<%= render :partial => "feedback"%>	
+	<!-- Third Div End-->
 
-<% if current_user && current_user.id == @user.id %>
-	<p>
-		<%= link_to 'Edit Profile', edit_user_registration_path %>
-	</p>
-<% end %>	
+	<!-- Fourth Div Start-->
+		<div class="clear"></div>
+	<!-- Fourth Div End-->
 
-
-<p>
-  <%= link_to 'Photos Viewer', user_photos_path(@user)  %>
-</p>
+</div>
 
 
 <div class='rating'>
-  <%= render :partial => 'rating'%> 
+  <%#= render :partial => 'rating'%> 
 </div>

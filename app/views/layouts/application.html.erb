@@ -4,9 +4,7 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
-
     <%= ajaxful_rating_style %>
-
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
     <%= yield(:head) %>
@@ -17,17 +15,16 @@
   <div class="main-frame">
     <div class="container">
 
-      <%= render 'layouts/header' %>
+        <%= render 'layouts/header' %>
     
         <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
         <% end %>
 
         <%= yield %>
 
-        <%= render 'layouts/footer' %>
     </div>
+    <%= render 'layouts/footer' %>
   </div>
-  Ï
 </body>
 </html>
