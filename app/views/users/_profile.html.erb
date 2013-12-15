@@ -1,29 +1,31 @@
 <div class="profile_cel1">
+
 	<div class="profile_picbox">
-		<%= image_tag "profile_pic.jpg", :alt =>"img"%>
+		<%= image_tag "profile_avtar.jpg", :alt =>"img"%>
 	</div>
 
 	<div class="tumb_imgbox">
 	  <div class="thumb_img">
-	    <%= link_to (image_tag "profile_pic.jpg", :alt =>"img") , "javascript:void(0)"%>
+	    <%= link_to (image_tag "small_avtar.jpg", :alt =>"img") , "javascript:void(0)"%>
 	  </div>
 	  <div class="thumb_img">
-	  	<%= link_to (image_tag "thumb2.jpg", :alt =>"img") , "javascript:void(0)"%>
+	  	<%= link_to (image_tag "small_avtar.jpg", :alt =>"img") , "javascript:void(0)"%>
 	  </div>
 	  <div class="thumb_img">
-	  	<%= link_to (image_tag "thumb1.jpg", :alt =>"img") , "javascript:void(0)"%>
+	  	<%= link_to (image_tag "small_avtar.jpg", :alt =>"img") , "javascript:void(0)"%>
 	  </div>
 	  <div class="thumb_img">
-	  	<%= link_to (image_tag "thumb2.jpg", :alt =>"img") , "javascript:void(0)"%>
+	  	<%= link_to (image_tag "small_avtar.jpg", :alt =>"img") , "javascript:void(0)"%>
 	  </div>
 	  <div class="thumb_img">
-	  	<%= link_to (image_tag "thumb1.jpg", :alt =>"img") , "javascript:void(0)"%>
+	  	<%= link_to (image_tag "small_avtar.jpg", :alt =>"img") , "javascript:void(0)"%>
 	  </div>
 	  <div class="clear"></div>
 	</div>
 
+
 	<div class="gobal_title">
-	  <h1> <%= @user.name %> <span>Graphic & Web Designer</span> </h1>
+	  <h1> <%= @user.name.try(:titleize) %> <span>Graphic & Web Designer</span> </h1>
 	  <div class="global_h"> 
 	  	<span>Global Rating :</span> 
 	  	<span>
@@ -32,14 +34,40 @@
 	  </div>
 	</div>
 
-	<div class="psl_text">
-	  <p>Lorem Ipsum, giving tion on its origins,
-	    Lorem Ipsum, giving infomation Ipsum, giving infomation on its origins 
-	  </p>
-	  <p>Giving tion on its origins,
-	    Lorem Ipsum, giving infomation Ipsum, giving infomation on its origins 
-	  </p>
-	</div>
+  <div class="psl_text">
+
+    <div class="detail_r"> <strong>Email: </strong>
+      <%= @user.email %> 
+    </div>
+
+    <div class="detail_r"> 
+    	<strong>Add: </strong>
+    	<span><%= @user.address_1 %></span>
+    	<span><%= @user.address_2 %></span>
+    	<span><%= @user.city %>  <%= @user.postal_code %> </span>
+    </div>
+
+    <div class="detail_r"> 
+      <strong>Contact: </strong>+<%= @user.contact_phone %> 
+    </div>
+
+    <div class="detail_r"> 
+      <strong>Cell No. : </strong>+<%= @user.cell_phone %> 
+    </div>
+
+	  <div class="btn_box">
+			<%= link_to 'Edit Profile', edit_user_registration_path ,:class=>"btn_r1" if (current_user && current_user.id == @user.id)%>
+
+			<%= link_to 'Photos Viewer', user_photos_path(@user),:class=>"btn_r1"   %>
+	  </div>
+
+    <p>Giving tion on its origins,
+      Lorem Ipsum, giving infomation Ipsum, giving infomation on its origins </p>
+    <p>Hi tion on its origins,
+      Lorem Ipsum, giving infomation Ipsum, giving infomation on its.</p>
+    <p>Giving tion on its origins,
+      Lorem Ipsum, giving infomation Ipsum, giving infomation on its origins </p>
+  </div>
 
 	<div class="personl_soc">
 	  <h2>Personal Social Profiles</h2>

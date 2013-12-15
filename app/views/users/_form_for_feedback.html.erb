@@ -1,16 +1,34 @@
-<br/>
-<h2>Feedback </h2><br/>
-
-Experience : <%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :experience %>
-
-Professionalism : <%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :professionalism %>
-
-Timeliness : <%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :timeliness %>
-
-Price : <%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :price %>
-
-Quality Of Work : <%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :workquality %>
-
-<br/>
-<br/>
-<br/>
+<h2 class="heading_t"><span></span> Please provide your feedback</h2>
+ 
+<div class="right_rating_box">
+	  <div class="right_row">
+	      <div class="rat_left">Experience : </div>
+	      <div class="rat_right">
+			<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :experience %>
+	      </div>
+	  </div>
+	  <div class="right_row">
+	      <div class="rat_left">Professionalism :  </div>
+	      <div class="rat_right">
+			<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :professionalism %>
+	      </div>
+	  </div>
+	  <div class="right_row">
+	      <div class="rat_left">Timeliness :  </div>
+	      <div class="rat_right">
+			<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :timeliness %>
+	      </div>
+	  </div>
+	  <div class="right_row">
+	      <div class="rat_left">Quality Of Work : </div>
+	      <div class="rat_right">
+			<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :price %>
+	      </div>
+	  </div>
+	  <div class="right_row">
+	      <div class="rat_left">Experience : </div>
+	      <div class="rat_right">
+			<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :workquality %>
+	      </div>
+	  </div>
+</div>

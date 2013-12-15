@@ -8,7 +8,7 @@ Global Rating : <%= render :partial => 'shared/stars' , :locals => { :y_star => 
 		<%= render :partial => 'form_for_feedback'%>
    <% end %>	
 <% elsif @business %>
-   <% @user.employee_businesses.each do |business| %>
-   		<%= render :partial => 'display_feedback_per_business' , :locals=>{:rating_per_criteria_hash => rating_per_criteria(business) , :business => business }%>
+   <% @user.employee_businesses.rated.each do |business| %>
+   	 <%= render :partial => 'display_feedback_per_business' , :locals=>{:rating_per_criteria_hash => rating_per_criteria(business) , :business => business }%>
    <% end %>	
 <% end %>	

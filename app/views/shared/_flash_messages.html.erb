@@ -1,0 +1,9 @@
+<% if !flash[:alert].blank? || !flash[:notice].blank? %>
+  <div class="row">
+    <% if !flash[:alert].blank? %>
+      <%= render :partial => "shared/messages" , locals: { alert: flash[:alert] } %>
+    <% elsif !flash[:notice].blank? %>
+      <%= render :partial => "shared/messages" , locals: { notice: flash[:notice] } %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,25 +1,55 @@
+<div class="comment_r">
+  <div class="com_img_box">
+  	<%= image_tag "thumb_avtar.jpg", :alt =>"img"%>
+  </div>
+  <div class="com_text">
+     <div class="arrow_c"></div>
+     <div class="com_text_left">
+       <h4 class="flag"><span>Soni me</span> 
+       	<%= image_tag "flag.png", :alt =>"flag" %>
+       </h4>
+       <p>You are most welcome.</p>
+     </div>
+     <div class="com_text_right">
+	    <p>
+		    <%= render :partial => 'shared/stars' , :locals => { :y_star =>  business.average_rating , :percent_rate => (100*(business.average_rating/5)) } %>
+	     </p>
+     </div>
+     <div class="clear"></div>
+     <p class="date_p">
+     	15/11/2013 
+     </p>
+  </div>
+  <div class="clear"></div>
+  <p class="more_p"><a href="#">More..</a></p>
+</div>
+
+<!--
+
 <br/>
 <h2>Feedback </h2>
 
-Average rating : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  business.average_rating , :percent_rate => (100*(business.average_rating/5)) } %>
+Average rating : <%#= render :partial => 'shared/stars' , :locals => { :y_star =>  business.average_rating , :percent_rate => (100*(business.average_rating/5)) } %>
 
 <br/>
 <br/>
 
-<% unless rating_per_criteria_hash.blank? %>
-	Experience : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:experience] , :percent_rate => (100*rating_per_criteria_hash[:experience]/5) } %>
+<%# unless rating_per_criteria_hash.blank? %>
+	Experience : <%#= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:experience] , :percent_rate => (100*rating_per_criteria_hash[:experience]/5) } %>
 
-	Professionalism : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:professionalism] , :percent_rate => (100*rating_per_criteria_hash[:professionalism]/5) } %>
+	Professionalism : <%#= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:professionalism] , :percent_rate => (100*rating_per_criteria_hash[:professionalism]/5) } %>
 
-	Timeliness : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:timeliness] , :percent_rate => (100*rating_per_criteria_hash[:timeliness]/5) } %>
+	Timeliness : <%#= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:timeliness] , :percent_rate => (100*rating_per_criteria_hash[:timeliness]/5) } %>
 
 
-	Price : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:price] , :percent_rate => (100*rating_per_criteria_hash[:price]/5) } %>
+	Price : <%#= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:price] , :percent_rate => (100*rating_per_criteria_hash[:price]/5) } %>
 
-	Quality Of Work : <%= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:workquality] , :percent_rate => (100*rating_per_criteria_hash[:workquality]/5) } %>
-<% else %>
+	Quality Of Work : <%#= render :partial => 'shared/stars' , :locals => { :y_star =>  rating_per_criteria_hash[:workquality] , :percent_rate => (100*rating_per_criteria_hash[:workquality]/5) } %>
+<%# else %>
 
-<% end %>
+<%# end %>
 <br/>
 <br/>
 <br/>
+
+-->

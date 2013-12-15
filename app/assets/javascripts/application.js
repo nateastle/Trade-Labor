@@ -26,5 +26,9 @@ $(function() {
   	$.get($("#welcome_search").attr("action"), $("#welcome_search").serialize(), null, "script");
     return false;
   });
+
+  $(".close").on("click", function(){
+     $('.flash_messages').slideUp('slow');
+  });
 });
 

@@ -63,8 +63,6 @@ body{ font-family:Arial, Helvetica, sans-serif; font-size:12px;  color:#000; bor
 .header span.logo{ float:left;}
 .header .right-head { float: right;}
 .header .right-head ul.head-btns { float: right; list-style: none outside none; margin-left: 0; padding-top: 50px;}
-.header .right-head ul.head-btns li { float: left;}
-.header .right-head ul.head-btns li + li { margin-left: 20px;}
 
 
 .search-box{ float:left; width:100%;}
@@ -95,12 +93,6 @@ ul.fea-list li span.read-more a{ font-family: 'kabel_dm_btdemi'; font-size:13px;
 .blog-text { float: right; padding: 16px 0; width: 75%;}
 .blog-text h3 { float: left; line-height: 35px; margin: 0; width: 100%; font-family: 'kabel_dm_btdemi'; font-size:23px; color:#3c505f;}
 .blog-text p{ font-family: 'open_sansregular'; font-size:15px; color:#000; text-align:center;}
-
-.footer{ float:left; width:100%; padding:15px 0;}
-.footer p{ float:left; line-height:45px; font-family: 'open_sansregular'; font-size:16px; color:#393b3c;}
-.footer ul.social-icon{ float:right; list-style:none; margin:0 0;}
-.footer ul.social-icon li{ float:left;}
-.footer ul.social-icon li+li{ margin-left:10px;}
 
 
 

@@ -8,6 +8,8 @@ class Business < ActiveRecord::Base
 
   ajaxful_rateable :stars => 5, :dimensions => DIMENSIONS_ARRAY
 
+  scope :rated ,  where("rated_at IS NOT NULL")
+  
   def average_rating_for_employee
   	  return average_rating
   end	
@@ -25,7 +27,8 @@ class Business < ActiveRecord::Base
   		business_rates = Rate.where("rateable_id = ? and rateable_type = ?",self.id,"Business") # self.class.name
 
   		business_rates.each {|r| avg = avg + r.stars }
-  		self.average_rating =  avg/DIMENSIONS_ARRAY.size
+  		self.average_rating =  avg.to_f/DIMENSIONS_ARRAY.size.to_f
+      self.rated_at =  Time.now
   		self.save
 
   		emp_businesses.each {|b| 

@@ -1,0 +1,14 @@
+<% if notice || alert %>
+  <div class="flash_messages" style="text-align: center;">
+    <%= raw "<div data-alert class='alert alert-success'> #{notice} 
+      <a href='javascript:void(0)' class='close'>&times;</a></div>" if notice %>
+    <%= raw "<div data-alert class='alert alert-danger'>#{alert} 
+      <a href='javascript:void(0)' class='close'>&times;</a></div>" if alert %>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+         $('.flash_messages').delay(3000).slideUp( 'slow');
+    });
+  </script>
+<% end %>
