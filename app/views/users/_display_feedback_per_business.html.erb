@@ -5,7 +5,7 @@
   <div class="com_text">
      <div class="arrow_c"></div>
      <div class="com_text_left">
-       <h4 class="flag"><span>Soni me</span> 
+       <h4 class="flag"><span><%= business.employer.name.try(:titleize)%></span> 
        	<%= image_tag "flag.png", :alt =>"flag" %>
        </h4>
        <p>You are most welcome.</p>
