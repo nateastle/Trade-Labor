@@ -40,12 +40,15 @@
       <%= @user.email %> 
     </div>
 
-    <div class="detail_r"> 
-    	<strong>Add: </strong>
-    	<span><%= @user.address_1 %></span>
-    	<span><%= @user.address_2 %></span>
-    	<span><%= @user.city %>  <%= @user.postal_code %> </span>
-    </div>
+		<div class="detail_r"> 
+	    <strong class="left_c">Address: </strong>
+	    <p class="right_c"> <%= @user.address_1 %><br />
+	      <%= @user.address_2 %><br />
+	      <%= @user.city %> <%= @user.postal_code %>
+	     </p>
+	    <div class="clear"></div>
+		</div>
+
 
     <div class="detail_r"> 
       <strong>Contact: </strong>+<%= @user.contact_phone %> 
@@ -61,12 +64,15 @@
 			<%= link_to 'Photos Viewer', user_photos_path(@user),:class=>"btn_r1"   %>
 	  </div>
 
-    <p>Giving tion on its origins,
-      Lorem Ipsum, giving infomation Ipsum, giving infomation on its origins </p>
-    <p>Hi tion on its origins,
-      Lorem Ipsum, giving infomation Ipsum, giving infomation on its.</p>
-    <p>Giving tion on its origins,
-      Lorem Ipsum, giving infomation Ipsum, giving infomation on its origins </p>
+    <div class="my_exp">
+      <h2>My Experties</h2>
+      <p>Giving tion on its origins,
+        Lorem Ipsum, giving infomation Ipsum, giving infomation on its origins </p>
+      <p>Hi tion on its origins,
+        Lorem Ipsum, giving infomation Ipsum, giving infomation on its.</p>
+      <p>Giving tion on its origins,
+        Lorem Ipsum, giving infomation Ipsum, giving infomation on its origins </p>
+    </div>
   </div>
 
 	<div class="personl_soc">
