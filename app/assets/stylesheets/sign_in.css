@@ -1,0 +1,86 @@
+/*css for login page start*/
+.login_box{
+width:640px;
+margin:auto;
+border-top:solid 1px #d9d9d9;
+border-bottom:solid 1px #d9d9d9;
+padding:25px 0 15px;
+position:relative;
+text-align:center;
+}
+.or {
+    background: none repeat scroll 0 0 #E5E4E4;
+    border-radius: 50px;
+    height: 35px;
+    left: 300px;
+    line-height: 35px;
+    position: absolute;
+    text-align: center;
+    top: -18px;
+    width: 35px;
+  font-style:italic;
+}
+.login_middle{
+width:325px;
+margin:auto;
+}
+.login_middle_r{
+background:#fff;
+border:solid 1px #e2e2e2;
+height:38px;
+line-height:38px;
+width:325px;
+border-radius:3px;
+position:relative;
+margin:20px 0;
+}
+.login_middle_r img{
+position:relative;
+top:0px;
+}
+.login_middle_r input[type="email"] ,.login_middle_r input[type="text"], .login_middle_r input[type="password"]{
+width:280px;
+float:right;
+background:none;
+border:none;
+line-height:38px;
+margin:0;
+padding:0;
+height:38px;
+}
+
+.remember_me{
+text-align:left;
+}
+.remember_me input{
+vertical-align:middle;
+position:relative;
+top:-4px;
+margin-right:4px;
+}
+.login_btn_r{
+text-align:left;
+}
+.login_btn_r{
+padding:10px 0;
+font-size:14px;
+}
+.login_btn_r .btn_r1{
+font-size:17px;
+background:url(submit_bg.png) repeat-x;
+height:45px;
+line-height:45px;
+width:160px;
+border:none;
+}
+.login_main_box{
+text-align:center;
+}
+.fb_btn{
+padding:0 0 30px 0;
+}
+
+label.boolean {
+    display: inline-block;
+}
+/*css for login page end*/

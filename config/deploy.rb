@@ -39,6 +39,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/log #{release_path}/log"
     run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
+    run "ln -nfs #{shared_path}/tmp/restart.txt #{release_path}/tmp/restart.txt"
     # Solr  
     run "ln -nfs #{shared_path}/solr #{current_path}/solr"
     #run "ls -al #{current_path}/solr/pids/"
