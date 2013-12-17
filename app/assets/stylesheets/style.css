@@ -524,6 +524,13 @@ ul.ui-autocomplete {
   border-right-color: #9A4D3E;
   border-width: 5px 5px 5px 0;
 }
+
+#feedback_form .tooltip-validate.right {
+  margin-left: 564px;
+  margin-top: -76px;
+  float: right;
+  width: 104px;
+} 
 /*Validation message end*/
 
 

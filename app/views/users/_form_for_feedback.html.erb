@@ -1,41 +1,54 @@
-<h2 class="heading_t"><span></span> Please provide your feedback</h2>
- 
-<div class="right_rating_box">
-	  <div class="right_row">
-	      <div class="rat_left">Experience : </div>
-	      <div class="rat_right">
-			<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :experience %>
-	      </div>
-	  </div>
-	  <div class="right_row">
-	      <div class="rat_left">Professionalism :  </div>
-	      <div class="rat_right">
-			<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :professionalism %>
-	      </div>
-	  </div>
-	  <div class="right_row">
-	      <div class="rat_left">Timeliness :  </div>
-	      <div class="rat_right">
-			<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :timeliness %>
-	      </div>
-	  </div>
-	  <div class="right_row">
-	      <div class="rat_left">Quality Of Work : </div>
-	      <div class="rat_right">
-			<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :price %>
-	      </div>
-	  </div>
-	  <div class="right_row">
-	      <div class="rat_left">Experience : </div>
-	      <div class="rat_right">
-			<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :workquality %>
-	      </div>
-	  </div>
-</div>
+<% if !current_user.already_rated?(@user) || !@business.is_feedback_submitted?  %>
+	<h2 class="heading_t"><span></span> Please provide your feedback</h2>
 
-<div class="company_box">
-    <form id="form1" name="form1" method="post" action="">
-      <textarea name="textarea"></textarea>
-      <input type="submit" name="Submit" value="Submit" class="btn_r2" />
-    </form>
-</div>
+	<% if !current_user.already_rated?(@user) %>
+		<div class="right_rating_box">
+			  <div class="right_row">
+			      <div class="rat_left">Experience : </div>
+			      <div class="rat_right">
+					<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :experience %>
+			      </div>
+			  </div>
+			  <div class="right_row">
+			      <div class="rat_left">Professionalism :  </div>
+			      <div class="rat_right">
+					<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :professionalism %>
+			      </div>
+			  </div>
+			  <div class="right_row">
+			      <div class="rat_left">Timeliness :  </div>
+			      <div class="rat_right">
+					<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :timeliness %>
+			      </div>
+			  </div>
+			  <div class="right_row">
+			      <div class="rat_left">Quality Of Work : </div>
+			      <div class="rat_right">
+					<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :price %>
+			      </div>
+			  </div>
+			  <div class="right_row">
+			      <div class="rat_left">Experience : </div>
+			      <div class="rat_right">
+					<%= ratings_for @business,:show_user_rating => true, :member => {:rate => :post},:remote_options => {:url =>rate_user_path(@business)} ,:dimension => :workquality %>
+			      </div>
+			  </div>
+		</div>
+	<% end %>
+
+
+	<% if !@business.is_feedback_submitted? %>
+		<div class="company_box"> 
+			<%= form_for @business , :url => post_feedback_users_path(@business) , :validate => true , :html => {:id => 'feedback_form'}  do |f| %>
+				<%= f.text_area :feedback_text , :maxlength=>"160"  %>
+				<%= f.submit "Submit" ,:class=>"btn_r2" %>
+			<% end %>
+
+		  <!--  <form id="form1" name="form1" method="post" action="">
+		      <textarea name="textarea"></textarea>
+		      <input type="submit" name="Submit" value="Submit" class="btn_r2" />
+		    </form> -->
+
+		</div>
+	<% end %>
+<% end %>	

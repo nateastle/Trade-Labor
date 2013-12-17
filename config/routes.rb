@@ -24,6 +24,9 @@ TradeLabor::Application.routes.draw do
     member do
       post 'rate' , :action => 'rate'
     end  
+    collection do
+      put 'post_feedback/:business_id' , :action => 'post_feedback' , :as => 'post_feedback'
+    end  
   end
   resources :zipcodes
   root :to => "welcome#index"

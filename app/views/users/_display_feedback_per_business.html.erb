@@ -8,7 +8,7 @@
        <h4 class="flag"><span><%= business.employer.name.try(:titleize)%></span> 
        	<%= image_tag "flag.png", :alt =>"flag" %>
        </h4>
-       <p>You are most welcome.</p>
+       <p><%= business.feedback_text %></p>
      </div>
      <div class="com_text_right">
 	    <p>

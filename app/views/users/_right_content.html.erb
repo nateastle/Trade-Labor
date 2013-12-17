@@ -17,7 +17,7 @@
   <!-- About My Company Start -->
 
   <!-- Feed back Form Start -->
-	  <% if current_user && (current_user.id != @user.id) && !current_user.already_rated?(@user) %>
+	  <% if current_user && (current_user.id != @user.id) %>
 	  <%# if current_user && (current_user.id != @user.id)  %>
 	   <%# if current_user.already_rated?(@user) %>
 	   	 <%#= render :partial => 'display_feedback_per_business' , :locals=>{:rating_per_criteria_hash =>rating_per_criteria(@business),:business=> @business } %>
@@ -26,22 +26,21 @@
 	   <%# end %>	
 	  <% end %> 
   <!-- Feed back Form Start -->
+<h2 class="heading_t"><span></span> Feedback’s</h2>
 
+<div class="cmt_box">
   <% unless @rated_business_array.blank? %>
-			<!-- Feedbacks Start -->
-			<h2 class="heading_t"><span></span> Feedback’s</h2>
+		<!-- Feedbacks Start -->
+		<% @rated_business_array.each do |business| %>
+	   	 <%= render :partial => 'display_feedback_per_business' , :locals=>{:rating_per_criteria_hash => rating_per_criteria(business) , :business => business }%>
+	    <% end %>	
+		<!-- Feedbacks Start -->
 
-			<div class="cmt_box">
-					<% @rated_business_array.each do |business| %>
-				   	 <%= render :partial => 'display_feedback_per_business' , :locals=>{:rating_per_criteria_hash => rating_per_criteria(business) , :business => business }%>
-				  <% end %>	
-			</div>
-			<!-- Feedbacks Start -->
+		<div class="clear"></div>
 
-			<div class="clear"></div>
-
-			<div class="see_more">
-				<a href="#" class="btn_r2">See More Feedbacks</a>
-			</div>
-	<% end %>		
+		<div class="see_more">
+			<a href="#" class="btn_r2">See More Feedbacks</a>
+		</div>
+	<% end %>
+</div>			
 </div>

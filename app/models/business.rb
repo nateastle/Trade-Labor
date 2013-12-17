@@ -10,6 +10,9 @@ class Business < ActiveRecord::Base
 
   scope :rated ,  where("rated_at IS NOT NULL")
   
+  validates_length_of :feedback_text , :minimum => 50 , :maximum => 160, :allow_blank => false
+
+
   def average_rating_for_employee
   	  return average_rating
   end	
@@ -29,15 +32,21 @@ class Business < ActiveRecord::Base
   		business_rates.each {|r| avg = avg + r.stars }
   		self.average_rating =  avg.to_f/DIMENSIONS_ARRAY.size.to_f
       self.rated_at =  Time.now
-  		self.save
-
-  		emp_businesses.each {|b| 
-  			global_avg = global_avg + b.average_rating
-  			counter += 1
-  		}
-
-
-  		emp.update_attribute(:rating_average , global_avg/counter) unless emp_businesses.blank?
+  		
+      if self.save
+    		emp_businesses.each {|b| 
+    			global_avg = global_avg + b.average_rating
+    			counter += 1
+    		}
+  		  emp.update_attribute(:rating_average , global_avg/counter) unless emp_businesses.blank?
+        return true
+      else  
+        return false
+      end  
   end	
+
+  def is_feedback_submitted?
+      !self.feedback_text.blank?
+  end  
 
 end
