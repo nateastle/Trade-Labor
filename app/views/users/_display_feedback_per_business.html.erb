@@ -2,24 +2,26 @@
   <div class="com_img_box">
   	<%= image_tag "thumb_avtar.jpg", :alt =>"img"%>
   </div>
+
   <div class="com_text">
-     <div class="arrow_c"></div>
-     <div class="com_text_left">
-       <h4 class="flag"><span><%= business.employer.name.try(:titleize)%></span> 
-       	<%= image_tag "flag.png", :alt =>"flag" %>
-       </h4>
-       <p><%= business.feedback_text %></p>
-     </div>
-     <div class="com_text_right">
-	    <p>
-		    <%= render :partial => 'shared/stars' , :locals => { :y_star =>  business.average_rating , :percent_rate => (100*(business.average_rating/5)) } %>
-	     </p>
-     </div>
-     <div class="clear"></div>
-     <p class="date_p">
-     	15/11/2013 
-     </p>
+    <div class="arrow_c"></div>
+    <div class="com_text_left">
+      <h4><span><%= business.employer.name.try(:titleize)%></span> 
+        <%= image_tag "flag.png", :alt =>"flag" , :style => "width:20px,height:14px;" %>
+      </h4>
+      <div class="com_text_right">
+        <p> 
+          <%= render :partial => 'shared/stars' , :locals => { :y_star =>  business.average_rating , :percent_rate => (100*(business.average_rating/5)) } %>
+        </p>
+      </div>
+      <div class="clear"></div>
+      <p><%= business.feedback_text %></p>
+    </div>
+
+    <div class="clear"></div>
+    <p class="date_p"> 15/11/2013 </p>
   </div>
+
   <div class="clear"></div>
   <p class="more_p"><a href="#">More..</a></p>
 </div>

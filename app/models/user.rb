@@ -191,8 +191,8 @@ class User < ActiveRecord::Base
 
   #TODO Remove this manual code from here , It is only for testing purpose.
   def find_or_create_business_with_current_user(user)
-      business = Business.find_by_employee_id_and_employer_id(self.id,user.id)
-      business.blank? ? Business.create(:employee_id => self.id, :employer_id =>user.id , :title => 'Test Business') : business
+      business = Business.find_or_create_by_employee_id_and_employer_id(self.id,user.id)
+      #business.blank? ? Business.create(:employee_id => self.id, :employer_id =>user.id , :title => 'Test Business') : business
   end  
 
   def already_rated?(emp)

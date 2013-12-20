@@ -303,7 +303,7 @@ left:-7px;
 }
 .com_text_left {
   float:left;
-  width:190px;
+ width:488px;
 }
 .com_text_right {
   float:right;
@@ -337,6 +337,7 @@ left:-7px;
   font-weight:normal;
   padding-bottom:3px;
   margin:0;
+  float:left;
 }
 .com_text_left p {
   font-size:12px;
