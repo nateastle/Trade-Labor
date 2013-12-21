@@ -7,6 +7,7 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails" 
 gem 'activemerchant'
 gem 'font_assets'
+gem 'rails-timeago', '~> 2.0'
 
 # Rating System
 gem 'ajaxful_rating' , :git => "git://github.com/edgarjs/ajaxful-rating.git", :branch => 'rails3'
@@ -34,7 +35,7 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 
- require 'csv'
+require 'csv'
 gem 'rubyzip', '< 1.0.0'
 gem 'roo','1.10.1'
 

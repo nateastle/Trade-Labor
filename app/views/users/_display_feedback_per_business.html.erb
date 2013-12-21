@@ -19,7 +19,7 @@
     </div>
 
     <div class="clear"></div>
-    <p class="date_p"> 15/11/2013 </p>
+    <p class="date_p"> <%= timeago_tag business.feedback_submited_at , :nojs => true, :limit => 2.days.ago %> </p>
   </div>
 
   <div class="clear"></div>

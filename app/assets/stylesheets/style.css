@@ -573,4 +573,31 @@ font-size:20px;
   padding-bottom: 6px;
 }
 
+/* Login */
+.login_btn_r{
+  text-align:left;
+  padding:10px 0;
+  font-size:14px;
+}
 
+
+.login_btn_r .btn_r1{
+  font-size:17px;
+  background:url(submit_bg.png) repeat-x;
+  height:45px;
+  line-height:45px;
+  width:160px;
+  border:none;
+}
+
+/* Login */
+
+/* Sign UP */
+.btm_link{
+  padding:10px 5px;
+}
+.btm_link a{
+  padding:0px 5px;
+}
+
+/* Sign UP */

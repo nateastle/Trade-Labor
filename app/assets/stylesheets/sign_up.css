@@ -1,0 +1,100 @@
+
+/*css for signup page start*/
+
+.signup_box{
+	width:100%;
+}
+.signup_box h2{
+	font-size:22px;
+	padding:0;
+	margin:0 10px 10px 0;
+	border-bottom:solid 1px #d9d9d9;
+}
+
+.signup_box h3{
+	font-size:16px;
+	padding:0;
+	margin:0 10px 10px 0;
+	border-bottom:solid 1px #d9d9d9;
+}
+
+.signup_box input[type="checkbox"], .signup_box input[type="radio"]{
+	vertical-align:middle;
+	position:relative;
+	top:-4px;
+	margin-right:4px;
+}
+.sing_up_r{
+	margin-bottom:8px;
+	text-transform:capitalize;
+}
+.sign_up_in{
+	padding-left:8%;
+}
+.sing_up_r p{
+	margin-bottom:2px;
+	padding-left:2px;
+	font-size:14px;
+}
+.sing_up_cell1{
+	float:left;
+	width:45%;
+}
+
+.curve_box {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	float: left;
+	margin-right: 8px;
+	padding: 4px;
+	-moz-box-shadow: 0 0 5px #ccc;
+	-webkit-box-shadow: 0 0 5px#ccc;
+	box-shadow: 0 0 5px #ccc;
+	margin-top:10px;
+	margin-bottom:10px;
+	/* sandeep*/
+	width: 361px;
+	margin-right: 22px;
+}
+.sing_up_r input[type="email"] , .sing_up_r input[type="text"], .sing_up_r input[type="password"]{
+	line-height:38px;
+	margin:0;
+	padding:0;
+	background:#fff;
+	border:solid 1px #e2e2e2!important;;
+	height:38px;
+	line-height:38px;
+	width:360px;
+	padding:0 4px;
+}
+
+.sing_up_r select{
+	line-height:38px;
+	margin:0;
+	padding:0;
+	background:#fff;
+	border:solid 1px #e2e2e2!important;;
+	height:38px;
+	line-height:38px;
+	width:370px;
+	padding:8px 4px;
+}
+.sing_up_r .list_s1{
+	width:178px;
+}
+
+.text_signup{
+	height:210px;
+	overflow-x:auto;
+	padding-right:15px;
+	margin:15px 0;
+}
+
+.card_expire_on  select {
+	width: 175px;
+	margin-left: 5px;
+}
+.card_expire_on{
+
+}	
+/*css for signup page end*/

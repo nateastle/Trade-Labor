@@ -1,30 +1,51 @@
 <%= fields_for payment_detail  do |pd| %>
+  <div class="sign_up_in">
+    <h2>Card Information</h2>
 
-  <%#= pd.error_messages %>
-  <p>
-    <%= pd.label :first_name %><br />
-    <%= pd.text_field :first_name %>
-  </p>
-  <p>
-    <%= pd.label :last_name %><br />
-    <%= pd.text_field :last_name %>
-  </p>
-  <p>
-    <%= pd.label :card_type %><br />
-    <%= pd.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
-  </p>
-  <p>
-    <%= pd.label :card_number %><br />
-    <%= pd.text_field :card_number %>
-  </p>
-  <p>
-    <%= pd.label :card_verification, "Card Verification Value (CVV)" %><br />
-    <%= pd.text_field :card_verification %>
-  </p>
-  <p>
-    <%= pd.label :card_expires_on %><br />
-    <%= pd.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true, :class =>"select3", :order => [:day, :month, :year], :date_separator => "/" %>
-  </p>
+    <div class="sing_up_r">
+      <div class="sing_up_cell1">
+        <p>First name</p>
+         <%= pd.text_field :first_name %>
+      </div>
+      <div class="sing_up_cell1">
+          <p>Last name</p>
+         <%= pd.text_field :last_name %>
+      </div>
+      <div class="clear"></div>
+    </div>
 
+    <div class="sing_up_r">
+        <div class="sing_up_cell1">
+          <p>Card type</p>
+          
+            <%= pd.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
+        </div>
+        <div class="sing_up_cell1">
+            <p>Card Number</p>
+             <%= pd.text_field :card_number %>
+        </div>
+        <div class="clear"></div>
+    </div>
 
+    <div class="sing_up_r">
+        <div class="sing_up_cell1">
+          <p>Card Verification Value (CVV)</p>
+          <%= pd.text_field :card_verification %>
+        </div>
+        <div class="sing_up_cell1">
+            <p>State</p>
+          <input type="text" name="textfield3"/>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="sing_up_r">
+        <div class="sing_up_cell1 card_expire_on">
+          <p>Card expires on</p>
+
+          <%= pd.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true, :class =>"select3 list_s1", :order => [:day, :month, :year], :date_separator => "/" %>
+        </div>
+      <div class="clear"></div>
+    </div>
+  </div>
 <% end %>

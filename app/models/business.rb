@@ -1,5 +1,5 @@
 class Business < ActiveRecord::Base
-   attr_accessible :employee_id, :employer_id , :title , :average_rating,:rated_at
+   attr_accessible :employee_id, :employer_id , :title , :average_rating,:rated_at , :feedback_submited_at , :feedback_text
 
   belongs_to :employee , :class_name => "User"
   belongs_to :employer, :class_name => "User"

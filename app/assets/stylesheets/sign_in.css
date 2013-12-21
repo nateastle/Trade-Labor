@@ -58,21 +58,7 @@ position:relative;
 top:-4px;
 margin-right:4px;
 }
-.login_btn_r{
-text-align:left;
-}
-.login_btn_r{
-padding:10px 0;
-font-size:14px;
-}
-.login_btn_r .btn_r1{
-font-size:17px;
-background:url(submit_bg.png) repeat-x;
-height:45px;
-line-height:45px;
-width:160px;
-border:none;
-}
+
 .login_main_box{
 text-align:center;
 }
@@ -82,5 +68,11 @@ padding:0 0 30px 0;
 
 label.boolean {
     display: inline-block;
+}
+.forgot_password .btn_r1{
+  width: 327px !important;
+}
+.forgot_password h2{
+ font-size: 28.5px;
 }
 /*css for login page end*/

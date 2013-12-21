@@ -17,6 +17,8 @@
 //= require_tree .
 //= require rails.validations.simple_form
 //= require jquery.tokeninput
+//= require rails-timeago
+//= require rails-timeago-all
 
 
 

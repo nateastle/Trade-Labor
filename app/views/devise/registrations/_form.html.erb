@@ -1,137 +1,167 @@
-<div class="container">
-  <div class="row-fluid">   
-    <div class="span12">     
+<!-- First Div start -->
+<div class="sign_up_in">
+    <h2>Sign up</h2>
 
-         <div class="form-inputs">
-           <fieldset>
+    <div class="sing_up_r">
 
-            <div class="span6 sign-up-left">  
-                <div>
-                        <%= f.label :email %>
-                        <%= f.email_field :email, :required => true %>
-                </div>
+      <div class="sing_up_cell1">
+        <p>Email</p>
+        <%= f.email_field :email, :required => true %>
+      </div>
 
-                <div>
-                    <%= f.label :password %>
-                    <%= f.password_field :password, :required => true %>
-                </div> 
+      <div class="sing_up_cell1">
+        <p>Business name</p>
+         <%= f.text_field :business_name %>
+      </div>
 
-                <div>
-                    <%= f.label :password_confirmation %>   
-                    <%= f.password_field :password_confirmation, :required => true %>
-                </div>
-
-                <div>
-                    <%= f.label :business_name %>
-                    <%= f.text_field :business_name %>
-                </div>
-
-                <div>
-                    <%= f.label :first_name %>
-                    <%= f.text_field :first_name%>
-                </div>
-
-                <div>
-                    <%= f.label :last_name %>
-                    <%= f.text_field :last_name%>
-                </div>
-                    <%#= f.association :skills %>
-
-                <h3>Choose Your Plan</h3>
-                <!-- <div>
-                    <%#= f.label :skill_tokens, "Skills" %>
-                    <%#= f.text_field :skill_tokens %>
-                </div> -->
-
-                <div>
-                    <ul>
-                      <li><%= f.radio_button :membership, Role::ROLES[:basic][:name] , :id => "basic"%><span>
-                           Basic User
-                      </span> </li>
-                      <li><%= f.radio_button :membership, Role::ROLES[:business][:name] , :checked => true , :id => "business" %><span>
-                        Business User
-                      </span></li>
-                      <li><%= f.radio_button :membership, Role::ROLES[:premium][:name] , :id => "premium"%><span>
-                        Premium User
-                      </span></li>
-                    </ul> 
-                </div>
-            </div>  
-
-
-            <div  class="span6">           
-                <div>
-                    <%= f.label :address_1 %>
-                    <%= f.text_field :address_1 %>
-                </div>
-                <div>
-                    <%= f.label :address_2 %>
-                    <%= f.text_field :address_2 %>
-                </div>
-                <div>
-                    <%= f.label :city %>
-                    <%= f.text_field :city %>
-                </div>
-                <div>
-                    <%= f.label :state %>
-                    <%= f.text_field :state %>
-                </div>
-                <div>
-                    <%= f.label :postal_code %>
-                    <%= f.text_field :postal_code %>
-                </div>
-                <div>
-                    <%= f.label :contact_phone %>
-                    <%= f.text_field :contact_phone %>
-                </div>
-                <div>
-                    <%= f.label :cell_phone %>
-                    <%= f.text_field :cell_phone %>
-                </div>
-                <h3>Schedule</h3>
-                <div class="inline_check_boxes">
-                    <%= f.fields_for :schedule do |schedule| %>  
-                        <div>
-                            <%= schedule.label :days, "Available Days" %>
-                            <%= schedule.check_box :days %>
-                        </div>
-                         <div>
-                            <%= schedule.label :nights, "Available Nights" %>
-                            <%= schedule.check_box :nights %> 
-                        </div>
-                         <div>
-                            <%= schedule.label :weekends, "Available Weekends" %>
-                            <%= schedule.check_box :weekends %>
-                        </div>
-                    <% end %>
-                </div>    
-            </div>      
-         </fieldset>
-        </div>
-
-
-   </div>
- </div>
-
-  <div class="row-fluid">   
-    <div class="span12"> 
-
-          <div id="payment_detail" >
-              <%= render :partial => 'payment_detail',:locals => {:payment_detail => resource.build_payment_detail } %>
-          </div>
-
-            <div>
-                <div id="terms-pane">
-                    <%= render :partial => "shared/terms_and_conditions"%>
-                </div>
-                <div class="inline_check_boxes" style="padding-top:15px;">
-                    <%= f.label :terms_of_service %>
-                    <%= f.check_box :terms_of_service %> 
-                </div>
-            </div>  
- 
+      <div class="clear"></div>
     </div>
-  </div>
+
+    <div class="sing_up_r">
+      <div class="sing_up_cell1">
+              <p>Password</p>
+        <%= f.password_field :password, :required => true %>
+
+      </div>
+      <div class="sing_up_cell1">
+        <p>Password confirmation</p>
+        <%= f.password_field :password_confirmation, :required => true %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="sing_up_r">
+      <div class="sing_up_cell1">
+        <p>First name</p>
+        <%= f.text_field :first_name%>
+      </div>
+      <div class="sing_up_cell1">
+        <p>Last name</p>
+        <%= f.text_field :last_name%>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="sing_up_r">
+      <div class="sing_up_cell1">
+        <p>Address 1</p>
+        <%= f.text_field :address_1 %>
+      </div>
+      <div class="sing_up_cell1">
+        <p>Address 2 </p>
+       <%= f.text_field :address_2 %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="sing_up_r">
+      <div class="sing_up_cell1">
+        <p>City</p>
+        <%= f.text_field :city %>
+      </div>
+      <div class="sing_up_cell1">
+        <p>State</p>
+       <%= f.text_field :state %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="sing_up_r">
+      <div class="sing_up_cell1">
+        <p>Postal code</p>
+       <%= f.text_field :postal_code %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="sing_up_r">
+      <div class="sing_up_cell1">
+        <p>Contact phone</p>
+         <%= f.text_field :contact_phone %>
+      </div>
+      <div class="sing_up_cell1">
+        <p>Cell phone</p>
+       <%= f.text_field :cell_phone %>
+      </div>
+      <div class="clear"></div>
+    </div>
 
 </div>
+<!-- First Div End -->
 
+<!-- Second Div start -->
+    <div class="sign_up_in">
+        <div class="sing_up_cell1 curve_box">
+          <h2>Choose Your Plan</h2>
+          
+          <div class="sing_up_r">    
+            <label> 
+             <%= f.radio_button :membership, Role::ROLES[:basic][:name] , :id => "basic"%> Basic User    
+            </label>
+          </div>
+          <div class="sing_up_r">
+            <label>    
+              <%= f.radio_button :membership, Role::ROLES[:business][:name] , :checked => true , :id => "business" %> Business User     
+            </label>
+          </div>
+          <div class="sing_up_r">  
+            <label>    
+              <%= f.radio_button :membership, Role::ROLES[:premium][:name] , :id => "premium"%> Premium User      
+            </label>
+          </div>
+        </div>
+      
+        <div class="sing_up_cell1 curve_box">
+          <%= f.fields_for :schedule do |schedule| %>  
+            <h2>Schedule</h2>
+            <div class="sing_up_r">     
+              <label>
+                <%= schedule.check_box :days %> Available Days
+              </label>
+            </div>
+            <div class="sing_up_r">
+              <label>    
+                 <%= schedule.check_box :nights %>  Available Nights  
+              </label>
+            </div>
+            <div class="sing_up_r"> 
+             <label>   
+              <%= schedule.check_box :weekends %> Available Weekends
+             </label>
+            </div>
+          <% end %> 
+        </div>
+      
+        <div class="clear"></div>
+    </div>
+<!-- Second Div End -->
+
+<!-- Third Div Start -->
+    <div id="payment_detail" >
+        <%= render :partial => 'payment_detail',:locals => {:payment_detail => resource.build_payment_detail } %>
+    </div>
+<!-- Third Div End -->
+
+<!-- Fourth Div Start -->
+    <div class="sign_up_in">
+        <h2>Terms &amp; Conditions</h2>
+    </div>
+    <div class="sign_up_in text_signup">
+      <h3>Acceptance of the Terms of Use</h3>
+      <p>
+        Welcome to the website of [COMPANY NAME] ("Company", "we" or "us"). The following terms and conditions[, together with any documents they expressly incorporate by reference] ([collectively, ]these "Terms of Use"), govern your access to and use of [WEBSITE DOMAIN NAME], including any content, functionality and services offered on or through [WEBSITE DOMAIN NAME] (the "Website"), whether as a guest or a registered user
+      </p>
+      <p>
+        Please read the Terms of Use carefully before you start to use the Website. By using the Website or by clicking to accept or agree to the Terms of Use when this option is made available to you, you accept and agree to be bound and abide by these Terms of Use and our Privacy Policy, found at [INSERT URL], incorporated herein by reference. If you do not want to agree to these Terms of Use or the Privacy Policy, you must not access or use the Website.
+      </p>
+      <p>
+        This Website is offered and available to users who are 18 years of age or older, and reside in the United States or any of its territories or possessions. By using this Website, you represent and warrant that you are of legal age to form a binding contract with the Company and meet all of the foregoing eligibility requirements. If you do not meet all of these requirements, you must not access or use the Website.
+      </p>
+      <h3>Changes to the Terms of Use</h3>
+
+      <p>
+        We may revise and update these Terms of Use from time to time in our sole discretion. All changes are effective immediately when we post them, and apply to all access to and use of the Website thereafter. However, any changes to the dispute resolution provisions set forth in Governing Law and Jurisdiction will not apply to any disputes for which the parties have actual notice on or prior to the date the change is posted on the Website. 
+      </p>
+      
+    </div>
+<!-- Fourth Div End -->
