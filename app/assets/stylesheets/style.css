@@ -601,3 +601,10 @@ font-size:20px;
 }
 
 /* Sign UP */
+
+.info_message{
+  font-size: 10px;
+}
+ul.token-input-list-facebook{
+  width: 349px;
+}

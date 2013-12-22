@@ -1,6 +1,9 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% content_for :head do %>
+    <%= stylesheet_link_tag "sign_up" %>
+<% end %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put },  :validate => true) do |f| %>
+<div class="signup_box">
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put },  :validate => true) do |f| %>
 
     <%#= f.error_notification %>
     <%= render :partial => 'shared/error_messages', :locals => {:target => resource}%>
@@ -9,101 +12,154 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-  <fieldset>
+    <!-- First Div start -->
+    <div class="sign_up_in">
+       <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-        <div>
-            <%= f.label :email %>
+        <div class="sing_up_r">
+
+          <div class="sing_up_cell1">
+            <p>Email</p>
             <%= f.email_field :email %>
-        </div>
-        <div>
-            <%= f.label :business_name %>
-            <%= f.text_field :business_name %>
-        </div>
-        <div>
-            <%= f.label :first_name %>
-            <%= f.text_field :first_name %>
-        </div>
-        <div>
-            <%= f.label :last_name%>
-            <%= f.text_field :last_name %>
+          </div>
+
+          <div class="sing_up_cell1">
+            <p>Business name</p>
+              <%= f.text_field :business_name %>
+          </div>
+
+          <div class="clear"></div>
         </div>
 
+        <div class="sing_up_r">
+          <div class="sing_up_cell1">
+            <p>Password <i class='info_message'>(leave blank if you don't want to change it)</i></p>
+            <%= f.password_field :password, :required => true %>
+
+          </div>
+          <div class="sing_up_cell1">
+            <p>Password confirmation</p>
+            <%= f.password_field :password_confirmation %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        
+        <div class="sing_up_r">
+          <div class="sing_up_cell1">
+            <p>First name</p>
+           <%= f.text_field :first_name %>
+          </div>
+          <div class="sing_up_cell1">
+            <p>Last name</p>
+              <%= f.text_field :last_name %>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="sing_up_r">
+          <div class="sing_up_cell1">
+            <p>Address 1</p>
+             <%= f.text_field :address_1 %>
+          </div>
+          <div class="sing_up_cell1">
+            <p>Address 2 </p>
+          <%= f.text_field :address_2 %>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="sing_up_r">
+          <div class="sing_up_cell1">
+            <p>City</p>
+           <%= f.text_field :city %>
+          </div>
+          <div class="sing_up_cell1">
+            <p>State</p>
+           <%= f.text_field :state %>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="sing_up_r">
+          <div class="sing_up_cell1">
+            <p>Postal code</p>
+            <%= f.text_field :postal_code, data: {autocomplete_source: zipcodes_path} %>
+          </div>
+
+          <div class="sing_up_cell1">
+            <p>Contact phone</p>
+            <%= f.text_field :contact_phone %>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="sing_up_r">
+          <div class="sing_up_cell1">
+            <p>Current Password</p><i class='info_message'>(we need your current password to confirm your changes)</i>
+             <%= f.password_field :current_password %>
+          </div>
+
+          <div class="sing_up_cell1">
+            <p>Cell phone</p>
+            <%= f.text_field :cell_phone %>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+    </div>
+    <!-- First Div End -->
+
+<!-- Second Div start -->
+    <div class="sign_up_in">
         <% if  current_user.business_user? || current_user.premium_user? %>
-            <div>
-                <%= f.label :skill_tokens , "Skills"%>
+            <div class="sing_up_cell1 curve_box">
+              <h2>Skills</h2>
+              <div class="sing_up_r">    
                 <%= f.text_field :skill_tokens , :data => {:load => resource.skills} %>
+              </div>
             </div>
         <% end %>    
 
-        <div>
-            <%= f.label :address_1 %>
-            <%= f.text_field :address_1 %>
-        </div>
-        <div>
-            <%= f.label :address_2 %>
-            <%= f.text_field :address_2 %>
-        </div>
-
-        <div>
-            <%= f.label :city %>
-            <%= f.text_field :city %>
-        </div>
-        <div>
-            <%= f.label :state %>
-            <%= f.text_field :state %>
-        </div>
-        <div>
-            <%= f.label :postal_code , "Zip Code" %>
-            <%= f.text_field :postal_code, data: {autocomplete_source: zipcodes_path} %>
-        </div>
-        <div>
-            <%= f.label :contact_phone %>
-            <%= f.text_field :contact_phone %>
-        </div>
-        <div>
-            <%= f.label :cell_phone %>
-            <%= f.text_field :cell_phone %>
-        </div>
-
-      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, :autocomplete => "off" %></div>
-
-      <div><%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %></div>
-
-      <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password %></div>
-
-      <%= f.fields_for :schedule do |schedule| %>  
-
-            <div>
-                <%= schedule.label :days, "Available Days" %>
-                <%= schedule.check_box :days %>
+        <div class="sing_up_cell1 curve_box">
+          <%= f.fields_for :schedule do |schedule| %>  
+            <h2>Schedule</h2>
+            <div class="sing_up_r">     
+              <label>
+                <%= schedule.check_box :days %> Available Days
+              </label>
             </div>
-             <div>
-                <%= schedule.label :nights, "Available Nights" %>
-                <%= schedule.check_box :nights %> 
+            <div class="sing_up_r">
+              <label>    
+                 <%= schedule.check_box :nights %>  Available Nights  
+              </label>
             </div>
-             <div>
-                <%= schedule.label :weekends, "Available Weekends" %>
-                <%= schedule.check_box :weekends %>
+            <div class="sing_up_r"> 
+             <label>   
+              <%= schedule.check_box :weekends %> Available Weekends
+             </label>
             </div>
-      <% end %>
+          <% end %> 
+        </div>
+      
+        <div class="clear"></div>
+    </div>
+<!-- Second Div End -->
 
-  </div>
-</fieldset>
+    <div class="sign_up_in">
+        <div class="login_btn_r">
+            <%= f.button :submit, "Save Changes" ,:class=>"btn_r1" %>
+        </div>
+        <h3>Cancel my account</h3>
 
-  <div class="form-actions">
-    <%= f.submit  "Update" %>
-  </div>
+        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 
-<% end %>
+        <%= link_to "Back", :back %>
 
-<h3>Cancel my account</h3>
+    </div>
+  <%end%>  
+</div>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 
-<%= link_to "Back", :back %>
 
 
 <script>
