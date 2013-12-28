@@ -52,6 +52,15 @@ class User < ActiveRecord::Base
   # TODO : We can calculcate lat , long at the time of registration so we will
   #not need a saprate zipcoe model and an "additional query".
   
+
+  def profile_photo_url(version)
+      if self.photos.profile_photo.blank?  
+        "#{version.to_s}_avtar.jpg"
+      else  
+        self.photos.profile_photo.first.name_url(version)
+      end  
+  end  
+
   def set_name
        self.name = "#{first_name} #{last_name}".strip
   end  

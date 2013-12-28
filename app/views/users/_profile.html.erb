@@ -1,28 +1,24 @@
 <div class="profile_cel1">
 
 	<div class="profile_picbox">
-		<%= image_tag "profile_avtar.jpg", :alt =>"img"%>
+		<%= image_tag @user.profile_photo_url(:profile), :alt =>"img"%>
 	</div>
 
 	<div class="tumb_imgbox">
-	  <div class="thumb_img">
-	    <%= link_to (image_tag "small_avtar.jpg", :alt =>"img") , "javascript:void(0)"%>
-	  </div>
-	  <div class="thumb_img">
-	  	<%= link_to (image_tag "small_avtar.jpg", :alt =>"img") , "javascript:void(0)"%>
-	  </div>
-	  <div class="thumb_img">
-	  	<%= link_to (image_tag "small_avtar.jpg", :alt =>"img") , "javascript:void(0)"%>
-	  </div>
-	  <div class="thumb_img">
-	  	<%= link_to (image_tag "small_avtar.jpg", :alt =>"img") , "javascript:void(0)"%>
-	  </div>
-	  <div class="thumb_img">
-	  	<%= link_to (image_tag "small_avtar.jpg", :alt =>"img") , "javascript:void(0)"%>
-	  </div>
+
+		<% @user.photos[0..4].each do |photo| %>	
+		  <div class="thumb_img">
+		    <%# if !photo.is_profile_picture? %>
+			    <a data-toggle="modal" href="<%= user_photo_path(@user,photo) %>" data-target="#myModal"><%= image_tag photo.name_url(:small), :alt =>"img" %> 
+			    </a>
+			<%# else %>
+			    <%#= image_tag photo.name_url(:small), :alt =>"img" %>
+			<%# end %>    
+		  </div>
+		<% end %>  
+	  
 	  <div class="clear"></div>
 	</div>
-
 
 	<div class="gobal_title">
 	  <h1> <%= @user.name.try(:titleize) %> <span>Graphic & Web Designer</span> </h1>
@@ -65,7 +61,7 @@
 	  </div>
 
     <div class="my_exp">
-      <h2>My Experties</h2>
+      <h2>My Experties And Skills</h2>
       <p>Giving tion on its origins,
         Lorem Ipsum, giving infomation Ipsum, giving infomation on its origins </p>
       <p>Hi tion on its origins,

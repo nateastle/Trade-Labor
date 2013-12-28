@@ -1,6 +1,6 @@
 <div class="comment_r">
   <div class="com_img_box">
-  	<%= image_tag "thumb_avtar.jpg", :alt =>"img"%>
+  	<%= image_tag business.employer.profile_photo_url(:thumb), :alt =>"img"%>
   </div>
 
   <div class="com_text">
@@ -15,7 +15,14 @@
         </p>
       </div>
       <div class="clear"></div>
-      <p><%= business.feedback_text %></p>
+
+      <p id="<%= business.id %>_less_text">
+        <%= truncate(business.feedback_text , length: 120, omission: '...') %>
+      </p>
+
+      <p id="<%= business.id %>_more_text">
+        <%= business.feedback_text %>
+      </p>
     </div>
 
     <div class="clear"></div>
@@ -23,7 +30,15 @@
   </div>
 
   <div class="clear"></div>
-  <p class="more_p"><a href="#">More..</a></p>
+
+  <p class="more_p">
+    <%= link_to "More..." , "javascript:void(0)" , :id => business.id.to_s + "_more_link" %>
+  </p>
+
+  <p class="less_p">
+    <%= link_to "Less..." , "javascript:void(0)" , :id => business.id.to_s + "_less_link" %>
+  </p>
+
 </div>
 
 <!--

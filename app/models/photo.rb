@@ -1,7 +1,17 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :name, :user_id
-belongs_to :user
+  attr_accessible :name, :user_id , :is_profile_photo
+  belongs_to :user
 
-mount_uploader :name, PhotoFileUploader
+  mount_uploader :name, PhotoFileUploader
 
+  scope :profile_photo , where("is_profile_photo = ?",true)
+
+
+  def is_profile_picture?
+ 	 is_profile_photo
+  end	
+
+  def is_not_profile_picture?
+ 	 !is_profile_photo
+  end	
 end

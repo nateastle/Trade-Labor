@@ -88,9 +88,15 @@ width:515px;
 }
 .header .right-head ul.head-btns li.button {
     float: left;
-    padding-left: 10px;
-    padding-right: 10px;
 }
+.header .right-head ul.head-btns li:first-child.button {
+      padding-right: 10px;
+}
+.header .right-head ul.head-btns li:last-child.button {
+      padding-right: 44px;
+}
+
+
 
 .profile_cel1 {
     background: none repeat scroll 0 0 #DCDCDC;
@@ -331,6 +337,20 @@ left:-7px;
 .more_p a:hover {
   color:#0099FF;
 }
+
+.less_p {
+   padding: 5px 0 0;
+  text-align:right;
+  font-size:14px;
+}
+.less_p a {
+  color:#131313;
+}
+.less_p a:hover {
+  color:#0099FF;
+}
+
+
 .com_text_left h4 {
   color:#f98d20;
   font-size:17px;
@@ -608,3 +628,8 @@ font-size:20px;
 ul.token-input-list-facebook{
   width: 349px;
 }
+
+.modal-footer #show_photo_form{
+  float: left;
+  margin: 0 0 20px 286px;
+}  

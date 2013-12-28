@@ -30,15 +30,16 @@
 
 <div class="cmt_box">
 	<!-- Feedbacks Start -->
-	  <% @rated_business_array.each do |business| %>
-   	 <%= render :partial => 'display_feedback_per_business' , :locals=>{:rating_per_criteria_hash => rating_per_criteria(business) , :business => business }%>
+	<% @rated_business_array.each do |business| %>
+   	   <%= render :partial => 'display_feedback_per_business' , :locals=>{:rating_per_criteria_hash => rating_per_criteria(business) , :business => business }%>
     <% end %>	
 	<!-- Feedbacks Start -->
 
 	<div class="clear"></div>
-
-	<div class="see_more">
-		<a href="#" class="btn_r2">See More Feedbacks</a>
-	</div>
+	<% if @rated_business_array.size > 3 %>
+		<div class="see_more">
+			<a href="#" class="btn_r2">See More Feedbacks</a>
+		</div>
+	<% end %>	
 </div>			
 </div>

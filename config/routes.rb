@@ -19,7 +19,11 @@ TradeLabor::Application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "newregistrations"}
   resources :users,only:[:show] do
-    resources :photos, :except => [:update, :edit]
+    resources :photos, :except => [:update, :edit] do
+      member do
+        post 'set_as_profile_photo' ,:action => 'set_as_profile_photo'
+      end  
+    end  
     resource :schedule
     member do
       post 'rate' , :action => 'rate'
