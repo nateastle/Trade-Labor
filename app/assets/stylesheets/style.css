@@ -90,7 +90,7 @@ width:515px;
     float: left;
 }
 .header .right-head ul.head-btns li:first-child.button {
-      padding-right: 10px;
+      padding-right: 6px !important;
 }
 .header .right-head ul.head-btns li:last-child.button {
       padding-right: 44px;
