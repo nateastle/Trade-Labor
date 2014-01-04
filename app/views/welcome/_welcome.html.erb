@@ -1,31 +1,47 @@
-<div id="users">
-	<% if @users %>
-		<% @users.try(:each) do |user| %>
-			<h2> 
-				<%= link_to user.business_name, user %>
-			</h2>
-			<div class="info">
-				Name:
-				<%= user.first_name %>
-				<%= user.last_name %>
-				<br>
-				Address:
-				<%= user.address_1  %>
-				<%= user.address_2 %>
-				<br>
-				<%= user.city %>
-				,
-				<%= user.postal_code %>
-				,
-				<%= user.state %>
-				<br>
-				<% if user.skills %>
-					Skills:
-					<% user.skills.try(:each) do |skill| %>
+<% if @users %>
+<% @users.try(:each) do |user| %>
+
+<div class="blog-frame">
+
+	<div class="lft-arrow">
+
+		<div class="right-arrow">
+
+			<div class="blog-main">
+				
+				<span class="client-img">
+					<%= image_tag user.profile_photo_url(:profile), :alt =>"img", :width => "130px"%></span>
+					
+				<div class="blog-text">
+
+					<h3>
+						<%= link_to user.business_name, user %></h3>
+				
+				
+					<p>
+						Name:
+						<%= user.first_name %>
+						<%= user.last_name %><br>
+						Address:
+						<%= user.address_1  %>
+						<%= user.address_2 %>
+						<%= user.city %>
+						,
+						<%= user.postal_code %>
+						,
+						<%= user.state %>
+						<br>
+						<% if user.skills %>
+						Skills:
+						<% user.skills.try(:each) do |skill| %>
 						<%= skill.name %>
-					<% end %>
-				<% end %>
-			</div>
-		<% end %>
-	<% end %>
+						<% end %>
+						<% end %>
+				</p><br><br>
 </div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+<% end %>
