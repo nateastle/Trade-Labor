@@ -88,11 +88,11 @@ ul.fea-list li span.read-more a{ font-family: 'kabel_dm_btdemi'; font-size:13px;
 .blog-frame { float: left; padding: 35px 10%; width: 80%; border-bottom: 1px solid #BEC6CB;}
 .blog-frame .lft-arrow{ float:left; background:url(image_path('left-arrow.png')) 0 center no-repeat; padding-left:16px;}
 .blog-frame .lft-arrow .right-arrow{ float:left; background:url(image_path('right-arrow.png')) right center no-repeat; padding-right:16px;}
-.blog-frame .lft-arrow .right-arrow .blog-main { background:#C1D5E4; border-radius: 25px; float: left; padding: 0 30px 0 10px; position: relative;}
-.blog-main .client-img { left: 10px; position: absolute; top: -5px; width: 100%;}
-.blog-text { float: right; padding: 16px 0; width: 75%;}
-.blog-text h3 { float: left; line-height: 35px; margin: 0; width: 100%; font-family: 'kabel_dm_btdemi'; font-size:23px; color:#3c505f;}
-.blog-text p{ font-family: 'open_sansregular'; font-size:15px; color:#000; text-align:center;}
+.blog-frame .lft-arrow .right-arrow .blog-main { background:#C1D5E4; border-radius: 25px; float: left; padding: 0 10px 0 10px; position: relative;}
+.blog-main .client-img { left: 10px; position: absolute; top: 7px; }
+.blog-text { float: right; padding: 16px 40px 0 200px; width: 75%;}
+.blog-text h3 { padding-left:20px;float: left; line-height: 35px; margin: 0; width: 100%; font-family: 'kabel_dm_btdemi'; font-size:23px; color:#3c505f; text-align:center;}
+.blog-text p{ padding-left:40px;font-family: 'open_sansregular'; font-size:15px; color:#000; text-align:center;}
 
 
 
