@@ -19,8 +19,8 @@
                   Account <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu account" role="menu">
-                <li><%= image_tag "very_small_avtar.jpg" %></li>
                   <li>
+                    <%= image_tag current_user.profile_photo_url(:very_small) %>
                     <%= link_to "Profile", current_user%>
                   </li>
                   <li><%= link_to "Settings", 'javascript:void(0)',{:class => "setting_icon" } %></li>

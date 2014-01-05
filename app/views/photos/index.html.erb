@@ -1,22 +1,58 @@
-<h1>Photos</h1>
-<br />
+<div id="continer">
 
-<p>This is the Photos (Index Action) page. To view/edit a photo, hover over and click on the thumbnail.<p>
+	<!-- First Div Start-->
+	<%= render :partial => "users/profile"%>	
+	<!-- First Div End-->
 
-<br />
-<%= link_to 'Back', user_path(@user) %> 
+	<!-- Second Div Start-->
+	<div class="profile_cel3">
+	      <div class="company_box">
+	    		
+	        <h2 class="heading_t"><span></span>Upload Profile Picture</h2>
+	    		
+	        <div class="right_row_pic">
+	          <%= render :partial => 'form' %>
+	        </div>
 
-<% if current_user && current_user.id ==  @user.id %>
- | <%= link_to 'Upload Photos', new_user_photo_path(@user) %> |
-<% end %>
+	        <h2 class="heading_t"><span></span>Uploaded Pictures</h2>
+	              
+	    	<% @photos.each_slice(3) do |pics| %>
+	           <div class="right_row_pic">
+					<% pics.each do |pic| %>
+			            <div class="pic_box <%= (pic.id == pics.last.id) ? 'right_margin' : ''  %>"> 
+			      		  <div class="pic_inbox">
 
-<br />
-<div id="gallery">
-  <ul id="grid">
-    <% @photos.each do |pic| %>
-     <li><%= link_to image_tag(pic.name.url(:thumb).to_s), { :controller => 'photos', :action => 'show', :id => pic.id } %>	
-				<%= link_to 'Remove', { :controller =>  'photos', :action => 'destroy', :id => pic.id }, :confirm => "Delete this photo?", :method => 'delete' %>
-			</li>
-    <% end %>
-  </ul>
+			      		  	<a data-toggle="modal" href="<%= user_photo_path(@user,pic) %>" data-target="#myModal"><%= image_tag(pic.name.url(:profile).to_s, :style=> "width:180px;height:202", :alt =>"img" )%>
+			      		  	</a>
+
+			      	      </div>
+
+			      	      <% if current_user && (current_user.id == @user.id) %>
+				      		  <div class="edit_r_box">
+				      			    <a href="#" class="btn_r1">Edit</a>		
+				      			    <%= link_to 'Remove', { :controller =>  'photos', :action => 'destroy', :id => pic.id }, :confirm => "Delete this photo?", :method => 'delete' , :class => 'remove_btn' %>	 
+				              </div>
+				          <% end %>    
+
+			    		</div>
+			    	<% end %>	
+			    	<div class="clear"></div>
+		    	</div> 
+	        <%end%>    
+
+	        <div class="right_row_pic">
+	            <div class="clear"></div> 
+			    <div class="digg_pagination">
+				  <%= will_paginate @photos, :container => false %>
+				</div>
+	        </div>
+	      </div>
+	      <div class="clear"></div>
+	</div>
+	<!-- Second Div End-->
+
+	<!-- Fourth Div Start-->
+	<div class="clear"></div>
+	<!-- Fourth Div End-->
+
 </div>

@@ -3,9 +3,9 @@ class PhotosController < ApplicationController
 	before_filter :find_user , :only => [:index , :show , :set_as_profile_photo]
 	
 
-
 	def index
-		@photos = @user.try('photos') || []
+		@photos = @user.try('photos').paginate(:page => params[:page], :per_page => 6) || []
+		@photo = Photo.new
     end
     
     def show
@@ -30,9 +30,14 @@ class PhotosController < ApplicationController
 	end
 
 	def destroy
-		@photo = Photo.find(params[:id])
-		@photo.destroy
-		redirect_to user_photos_url, notice: "Image was successfully destroyed."
+		@photo = current_user.photos.find(params[:id])
+		if @photo.destroy
+			@photo.destroy
+			flash[:notice] = "Image was successfully destroyed."
+		else
+			flash[:alert] = "You are not allow to remove this Image."
+		end	
+		redirect_to user_photos_url
 	end
 
 	def set_as_profile_photo

@@ -8,6 +8,7 @@ gem "twitter-bootstrap-rails"
 gem 'activemerchant'
 gem 'font_assets'
 gem 'rails-timeago', '~> 2.0'
+gem 'will_paginate', '~> 3.0'
 
 # Rating System
 gem 'ajaxful_rating' , :git => "git://github.com/edgarjs/ajaxful-rating.git", :branch => 'rails3'
