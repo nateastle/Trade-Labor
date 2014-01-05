@@ -633,3 +633,157 @@ ul.token-input-list-facebook{
   float: left;
   margin: 0 0 20px 286px;
 }  
+
+
+/*css of 1-1-2014 start*/
+
+.pic_box{
+width:180px;
+min-height:200px;
+background:#fff;
+padding:6px;
+border:solid 1px #ccc;
+border-radius:4px;
+float:left;
+margin-right:22px;
+}
+.right_margin{
+margin-right:0 !important;
+}
+.right_row_pic {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #D0D4D8;
+    border-radius: 3px;
+    font-size: 14px;
+
+    margin: 4px 2px 10px;
+    padding:12px 11px 12px 14px;
+}
+
+.pic_inbox{
+}
+.edit_r_box{
+text-align:center;
+margin-top:10px;
+padding-top:10px;
+border-top:solid 1px #ccc;
+}
+.edit_r_box a{
+
+padding:0px 15px;
+height:26px;
+line-height:26px;
+}
+
+.demo {
+
+    margin:20px auto 0;
+  text-align:center;
+}
+.pagination li {
+  display: inline-block;
+  line-height: 25px;
+}
+.pagination a {
+  display: block;
+  color: #333;
+
+  padding: 0 10px;
+  border-radius: 2px;
+  border:solid 1px #ccc;
+  box-shadow: 0 1px 0 #5a5b5c inset,0 1px 0 #ccc;
+  background: #fff;
+}
+.pagination a:hover {
+  text-decoration: none;
+  box-shadow: 0 1px 0 #f9bd71 inset,0 1px 0 #0a0a0a;
+  background: linear-gradient(top,#f48b03,#c87100);
+}
+.pagination li:target a {
+  box-shadow: 1px 0 5px #1a1a1b inset,1px 0 0 #2d2d2d,0 1px 0 #2d2d2d;
+  background: linear-gradient(top,#252627,#1c1c1e);
+}
+
+.upload_form{
+height:34px;
+/*border:solid 1px #ccc;*/
+background:url(../images/select_file.jpg) no-repeat;
+width:345px;
+padding:5px;
+border-radius:4px;
+-webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.upload_form input[type="file"]{
+opacity:0;
+width:89%;
+}
+.remove_btn{
+    background:#DE2227;
+    border: 1px solid #F80903;
+    border-radius: 2px;
+    box-shadow: -1px -1px #CCCCCC;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 11px;
+    padding: 0 5px;
+}
+.remove_btn:hover {
+  color:#CCCCCC;
+ 
+}
+/*css of 1-1-2014 end*/
+
+/*css for popup start*/
+
+.modal-body-content{
+text-align:center;
+}
+.modal-body-content img{
+border:solid 1px #ccc;
+padding:4px;
+background:#fff;
+ border-radius: 3px;
+ -moz-box-shadow: 0 0 5px #b9b9b9;
+-webkit-box-shadow: 0 0 5px#b9b9b9;
+box-shadow: 0 0 5px #b9b9b9;
+}
+.modal-header h3 {
+    line-height: 30px;
+    margin: 0;
+	font-family: 'open_sansregular';
+}
+.close{
+ border: 1px solid #666666 !important;
+  padding: 0 4px !important;
+}
+ .btn-group .btn{
+ padding: 8px 12px;
+ font-family: open_sansregular;
+ font-size: 16px !important;
+ border-radius: 8px !important;
+}
+	
+.btn-group .btn-info{
+ background-image: linear-gradient(to bottom, #5BC0DE, #3FC2E4);
+}
+
+.setting_icon{
+ background:url(setting.png) no-repeat left;
+ padding-left:25px !important;
+}
+
+.logout_icon{
+ background:url(logout.png) no-repeat left;
+ padding-left:25px !important;
+}
+/*css for popup end*/
+
+
