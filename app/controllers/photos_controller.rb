@@ -23,10 +23,11 @@ class PhotosController < ApplicationController
 	def create
 		@photo = current_user.photos.new(params[:photo])
 		if @photo.save
-			redirect_to user_photos_url, notice: "Image was successfully saved."
+			 flash[:notice] = "Image was successfully saved."
 		else
-			render :new
+			flash[:alert] = "Image could not be saved."
 		end
+		redirect_to user_photos_url
 	end
 
 	def destroy
