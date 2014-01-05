@@ -707,7 +707,7 @@ line-height:26px;
 .upload_form{
 height:34px;
 /*border:solid 1px #ccc;*/
-background:url(../images/select_file.jpg) no-repeat;
+background:url(select_file.jpg) no-repeat;
 width:345px;
 padding:5px;
 border-radius:4px;
