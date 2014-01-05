@@ -18,13 +18,14 @@
                 <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                   Account <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu">
+                <ul class="dropdown-menu account" role="menu">
+                <li><%= image_tag "very_small_avtar.jpg" %></li>
                   <li>
-                    <%= link_to "Profile", current_user %>
+                    <%= link_to "Profile", current_user%>
                   </li>
-                  <li><%= link_to "Settings", 'javascript:void(0)' %></li>
+                  <li><%= link_to "Settings", 'javascript:void(0)',{:class => "setting_icon" } %></li>
                   <li class="divider"></li>
-                  <li><%= link_to('Logout', destroy_user_session_path)%>
+                  <li><%= link_to('Logout', destroy_user_session_path,{:class => "logout_icon" })%>
                   </li>
                 </ul>
               </div>
