@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 	
 	before_filter :find_user , :only => [:index , :show , :set_as_profile_photo]
-	
+	before_filter :authenticate_user! , :only => [:create]
 
 	def index
 		@photos = @user.try('photos').paginate(:page => params[:page], :per_page => 6) || []

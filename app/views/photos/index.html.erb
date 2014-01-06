@@ -7,12 +7,13 @@
 	<!-- Second Div Start-->
 	<div class="profile_cel3">
 	      <div class="company_box">
-	    		
-	        <h2 class="heading_t"><span></span>Upload Picture</h2>
-	    		
-	        <div class="right_row_pic">
-	          <%= render :partial => 'form' %>
-	        </div>
+	    	
+	      	<% if current_user && (current_user.id == @user.id) %>	
+	        	<h2 class="heading_t"><span></span>Upload Picture</h2>
+		        <div class="right_row_pic">
+		          <%= render :partial => 'form' %>
+		        </div>
+		    <% end %>    
 
 	        <h2 class="heading_t"><span></span>Uploaded Pictures</h2>
 	              
