@@ -774,8 +774,12 @@ box-shadow: 0 0 5px #b9b9b9;
 .btn-group .btn-info{
  background-image: linear-gradient(to bottom, #5BC0DE, #3FC2E4);
 }
+.btn-group .btn-info:hover{
+ background-image: linear-gradient(to bottom, #5BC0DE, #3FC2E4);
+}
 
-.setting_icon{
+
+/*.setting_icon{
  background:url(setting.png) no-repeat left;
  padding-left:25px !important;
 }
@@ -783,23 +787,42 @@ box-shadow: 0 0 5px #b9b9b9;
 .logout_icon{
  background:url(logout.png) no-repeat left;
  padding-left:25px !important;
-}
+}*/
 /*css for popup end*/
 
 
 /* Pagination Start */
-.digg_pagination {
-  background: white;
-  cursor: default;
-  /* self-clearing method: */ }
+.digg_pagination{
+background:none !important;
+text-align:center;
+}
+
+
   .digg_pagination a, .digg_pagination span, .digg_pagination em {
     padding: 0.2em 0.5em;
-    display: block;
-    float: left;
-    margin-right: 1px; }
+    display: inline-block;
+  /*  float: left;*/
+    margin-right: 1px; 
+	background:#fff;
+	}
+	.actions{
+	float: right;
+    margin-top: -38px;
+	}
+	.actions input[type="submit"] {
+    background: none repeat scroll 0 0 #17A6CB;
+    border-radius: 3px;
+    color: #FFFFFF;
+    padding: 6px;
+}
+.actions input[type="submit"]:hover{
+ background: none repeat scroll 0 0 #098daf;
+}
+	
   .digg_pagination .disabled {
     color: #999999;
     border: 1px solid #dddddd; }
+	
   .digg_pagination .current {
     font-style: normal;
     font-weight: bold;
@@ -835,3 +858,10 @@ box-shadow: 0 0 5px #b9b9b9;
   *:first-child + html .digg_pagination {
     overflow: hidden; }
 /* Pagination  Start */
+
+span.error {
+  color: red;
+  margin: 7px;
+}
+
+/*css of 8-1-14*/

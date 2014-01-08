@@ -20,6 +20,8 @@ gem 'ajaxful_rating' , :git => "git://github.com/edgarjs/ajaxful-rating.git", :b
 gem 'pg'
 gem 'pg_search'
 gem 'jquery-tokeninput-rails'
+gem "font-awesome-rails"
+
 
 #### Solr specific start ######
 gem 'sunspot_rails' ,'2.1.0' #, github: 'sunspot/sunspot', branch: 'master'

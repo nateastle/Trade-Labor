@@ -20,12 +20,14 @@
                 </button>
                 <ul class="dropdown-menu account" role="menu">
                   <li>
-                    <%= image_tag current_user.profile_photo_url(:very_small) %>
-                    <%= link_to "Profile", current_user%>
+     
+                    <%= link_to "<img src=#{current_user.profile_photo_url(:very_small)} /> Profile".html_safe(),current_user%>
                   </li>
-                  <li><%= link_to "Settings", 'javascript:void(0)',{:class => "setting_icon" } %></li>
+                  <li> 
+                  <%= link_to "<i class='icon-wrench'></i> Settings".html_safe() , 'javascript:void(0)',{:class => "setting_icon" } %></li>
                   <li class="divider"></li>
-                  <li><%= link_to('Logout', destroy_user_session_path,{:class => "logout_icon" })%>
+                  <li>
+                  <%= link_to("<i class='icon-off'></i> Logout".html_safe(), destroy_user_session_path,{:class => "logout_icon" })%>
                   </li>
                 </ul>
               </div>
